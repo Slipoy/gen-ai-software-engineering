@@ -1,0 +1,611 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		05A2371263E03191D598A121 /* MultiSelectMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8846F4271AD0E8135F75B477 /* MultiSelectMenu.swift */; };
+		1C3644BA909A47B4CFED0374 /* TicketCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55F0FCE5078969D13B001B5 /* TicketCardView.swift */; };
+		24BDBFD021A31F56AC7852A1 /* TicketFormTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73111884764437CD4652828 /* TicketFormTests.swift */; };
+		2A0DFA10FB80C57DDFEEDAE1 /* ClassificationCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD0240D181C64E9B15354DB /* ClassificationCardView.swift */; };
+		32940FDD3A06814F49541CF8 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C11581295FAA6BD3B4E399 /* APIClient.swift */; };
+		6999EEFAE750A82BE7A88A8C /* ApiStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B489A8C45B0ADC2626B8E55 /* ApiStatusView.swift */; };
+		6AEA622E97D95E50A28D9775 /* AllTicketsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD94ABB42D1AEE861B6DB67 /* AllTicketsView.swift */; };
+		71842E42757106B0BCF38453 /* ImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448CE713C49269A01901A9EE /* ImportView.swift */; };
+		73616003087E51ABAB59B94D /* TicketFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780585E738DCE701AC2D353D /* TicketFormView.swift */; };
+		7404D4E59894F5BC963E4EBE /* Fixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD2E702AD75B63D4BF08B6B /* Fixtures.swift */; };
+		7C42175DFE59CA1B1096B327 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D20939B144A184064D3B5AE /* AppState.swift */; };
+		82E84FA19A14E1503C77C80C /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDE58704D51DCB0CD2F8DF2 /* RootView.swift */; };
+		859609EA42D5323DA3DDACAF /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCC2115F9B3ABFFA88AD832 /* Components.swift */; };
+		91146E1A5B9B79810220ED76 /* SupportDeskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC961010C05A95AD49AD103 /* SupportDeskApp.swift */; };
+		9B1197D57B0B32007579E20E /* TicketForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0A3CC18853436FDF29640F /* TicketForm.swift */; };
+		A9656286FBF91DE98DE9BAD2 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CCC555E1B5CC772966E87A /* Ticket.swift */; };
+		B251E1BF4FF7D59577879A9C /* TicketDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A12F265085D6296CDA557B /* TicketDetailView.swift */; };
+		CF20D3392C234552310289D9 /* Wording.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C9429394EEF1687690C1A4 /* Wording.swift */; };
+		D144D60AEC5D00A761D9C4A7 /* DecisionLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE6A7DE5D37F0464878B1E9 /* DecisionLogView.swift */; };
+		D8C4D59A338287C5F47472B0 /* ModelDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971D452DAA2656911F90E0D6 /* ModelDecodingTests.swift */; };
+		DE4D39ED575B3872F1B1E3EB /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51CB9B997229DF6C6350F3A /* Theme.swift */; };
+		F27016C7165E8A3E31BD8123 /* QueueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188971C9C8860E38B5292CEA /* QueueView.swift */; };
+		F41F81D6FDE6572E9E665E9D /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AC3B5328B39922CDBF7840 /* APIClientTests.swift */; };
+		F6DCCEB8C152BC96555EAED0 /* TicketListLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582194F0D2697F71A95606DF /* TicketListLoader.swift */; };
+		F8286D90AF65B24E2F05DD04 /* Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2BF1F1ADCEC823496B3C27 /* Formatting.swift */; };
+		F93D034F109EE65270078E36 /* WordingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CC22E7E8807964F8FC1E86 /* WordingTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		52B49EB4CAF29B6723B616CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5AB99EDD1605FDE8596279FC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A32492E7B88D095BF0258512;
+			remoteInfo = SupportDesk;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		07C11581295FAA6BD3B4E399 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		188971C9C8860E38B5292CEA /* QueueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueView.swift; sourceTree = "<group>"; };
+		1D20939B144A184064D3B5AE /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		23C4886B797C1E4F23F4E01A /* SupportDesk.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SupportDesk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C0A3CC18853436FDF29640F /* TicketForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketForm.swift; sourceTree = "<group>"; };
+		3DD2E702AD75B63D4BF08B6B /* Fixtures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fixtures.swift; sourceTree = "<group>"; };
+		448CE713C49269A01901A9EE /* ImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportView.swift; sourceTree = "<group>"; };
+		4AC961010C05A95AD49AD103 /* SupportDeskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportDeskApp.swift; sourceTree = "<group>"; };
+		4BD0240D181C64E9B15354DB /* ClassificationCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationCardView.swift; sourceTree = "<group>"; };
+		582194F0D2697F71A95606DF /* TicketListLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketListLoader.swift; sourceTree = "<group>"; };
+		6B489A8C45B0ADC2626B8E55 /* ApiStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiStatusView.swift; sourceTree = "<group>"; };
+		6EDE58704D51DCB0CD2F8DF2 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		76AC3B5328B39922CDBF7840 /* APIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientTests.swift; sourceTree = "<group>"; };
+		780585E738DCE701AC2D353D /* TicketFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketFormView.swift; sourceTree = "<group>"; };
+		8846F4271AD0E8135F75B477 /* MultiSelectMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectMenu.swift; sourceTree = "<group>"; };
+		971D452DAA2656911F90E0D6 /* ModelDecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDecodingTests.swift; sourceTree = "<group>"; };
+		A73111884764437CD4652828 /* TicketFormTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketFormTests.swift; sourceTree = "<group>"; };
+		BDE6A7DE5D37F0464878B1E9 /* DecisionLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionLogView.swift; sourceTree = "<group>"; };
+		BFCC2115F9B3ABFFA88AD832 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		C0C9429394EEF1687690C1A4 /* Wording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wording.swift; sourceTree = "<group>"; };
+		C8CCC555E1B5CC772966E87A /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		D2B9D86C7224BBD30E90D64D /* SupportDeskTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = SupportDeskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D35AB8F7E3223B742CAF9E62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D7CC22E7E8807964F8FC1E86 /* WordingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordingTests.swift; sourceTree = "<group>"; };
+		DAD94ABB42D1AEE861B6DB67 /* AllTicketsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTicketsView.swift; sourceTree = "<group>"; };
+		E55F0FCE5078969D13B001B5 /* TicketCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketCardView.swift; sourceTree = "<group>"; };
+		E6A12F265085D6296CDA557B /* TicketDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketDetailView.swift; sourceTree = "<group>"; };
+		F51CB9B997229DF6C6350F3A /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		FB2BF1F1ADCEC823496B3C27 /* Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatting.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		1980D6819BE31697B8DCB282 /* Tickets */ = {
+			isa = PBXGroup;
+			children = (
+				DAD94ABB42D1AEE861B6DB67 /* AllTicketsView.swift */,
+			);
+			path = Tickets;
+			sourceTree = "<group>";
+		};
+		3D4DD263361F000BBF32C59C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C8CCC555E1B5CC772966E87A /* Ticket.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4AEAA5ED13BEB8DFB8074FD8 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				FB2BF1F1ADCEC823496B3C27 /* Formatting.swift */,
+				2C0A3CC18853436FDF29640F /* TicketForm.swift */,
+				C0C9429394EEF1687690C1A4 /* Wording.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		54AE1EFEBFDBBF9A0417F549 /* SupportDesk */ = {
+			isa = PBXGroup;
+			children = (
+				D35AB8F7E3223B742CAF9E62 /* Info.plist */,
+				D391BED59F7BF502D037555A /* API */,
+				94B66A75F1A7F780EAF2D222 /* App */,
+				3D4DD263361F000BBF32C59C /* Models */,
+				F3C4D341144B3B32C381F2C8 /* State */,
+				4AEAA5ED13BEB8DFB8074FD8 /* Support */,
+				A64821DF62B5FDC95BCF3D19 /* Theme */,
+				72FC5AE5EB4E28DE209389A0 /* Views */,
+			);
+			path = SupportDesk;
+			sourceTree = "<group>";
+		};
+		6D134E4D3F6A0CC6C3263E5D /* SupportDeskTests */ = {
+			isa = PBXGroup;
+			children = (
+				76AC3B5328B39922CDBF7840 /* APIClientTests.swift */,
+				3DD2E702AD75B63D4BF08B6B /* Fixtures.swift */,
+				971D452DAA2656911F90E0D6 /* ModelDecodingTests.swift */,
+				A73111884764437CD4652828 /* TicketFormTests.swift */,
+				D7CC22E7E8807964F8FC1E86 /* WordingTests.swift */,
+			);
+			path = SupportDeskTests;
+			sourceTree = "<group>";
+		};
+		72FC5AE5EB4E28DE209389A0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6EDE58704D51DCB0CD2F8DF2 /* RootView.swift */,
+				C7BA1CDBE3F9F062507FB1EB /* Components */,
+				FC038FFE8AC0B17A5CBB5443 /* Detail */,
+				FCCC3A585405A230385D99B5 /* Form */,
+				A08D01074B0FC0A82DE1AFB9 /* Import */,
+				F89938D1EF3078C2C100D5A1 /* Queue */,
+				1980D6819BE31697B8DCB282 /* Tickets */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		94B66A75F1A7F780EAF2D222 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				4AC961010C05A95AD49AD103 /* SupportDeskApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A08D01074B0FC0A82DE1AFB9 /* Import */ = {
+			isa = PBXGroup;
+			children = (
+				448CE713C49269A01901A9EE /* ImportView.swift */,
+			);
+			path = Import;
+			sourceTree = "<group>";
+		};
+		A64821DF62B5FDC95BCF3D19 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				F51CB9B997229DF6C6350F3A /* Theme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		C7BA1CDBE3F9F062507FB1EB /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				6B489A8C45B0ADC2626B8E55 /* ApiStatusView.swift */,
+				BFCC2115F9B3ABFFA88AD832 /* Components.swift */,
+				8846F4271AD0E8135F75B477 /* MultiSelectMenu.swift */,
+				E55F0FCE5078969D13B001B5 /* TicketCardView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		D391BED59F7BF502D037555A /* API */ = {
+			isa = PBXGroup;
+			children = (
+				07C11581295FAA6BD3B4E399 /* APIClient.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		DB0E075B26A8062D17172728 = {
+			isa = PBXGroup;
+			children = (
+				54AE1EFEBFDBBF9A0417F549 /* SupportDesk */,
+				6D134E4D3F6A0CC6C3263E5D /* SupportDeskTests */,
+				E13C1DB10B054DC8803B69E2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E13C1DB10B054DC8803B69E2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				23C4886B797C1E4F23F4E01A /* SupportDesk.app */,
+				D2B9D86C7224BBD30E90D64D /* SupportDeskTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F3C4D341144B3B32C381F2C8 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				1D20939B144A184064D3B5AE /* AppState.swift */,
+				582194F0D2697F71A95606DF /* TicketListLoader.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		F89938D1EF3078C2C100D5A1 /* Queue */ = {
+			isa = PBXGroup;
+			children = (
+				188971C9C8860E38B5292CEA /* QueueView.swift */,
+			);
+			path = Queue;
+			sourceTree = "<group>";
+		};
+		FC038FFE8AC0B17A5CBB5443 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				4BD0240D181C64E9B15354DB /* ClassificationCardView.swift */,
+				BDE6A7DE5D37F0464878B1E9 /* DecisionLogView.swift */,
+				E6A12F265085D6296CDA557B /* TicketDetailView.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		FCCC3A585405A230385D99B5 /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				780585E738DCE701AC2D353D /* TicketFormView.swift */,
+			);
+			path = Form;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A32492E7B88D095BF0258512 /* SupportDesk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 57C30171C93C2346DA33444E /* Build configuration list for PBXNativeTarget "SupportDesk" */;
+			buildPhases = (
+				D2E1C70E839D0667AC118D32 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SupportDesk;
+			packageProductDependencies = (
+			);
+			productName = SupportDesk;
+			productReference = 23C4886B797C1E4F23F4E01A /* SupportDesk.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E3CDDBD16FFE0AEC680E787A /* SupportDeskTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4A5D581241E75DE164C672C /* Build configuration list for PBXNativeTarget "SupportDeskTests" */;
+			buildPhases = (
+				675C228B56D9DAD5E37252A4 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0E82ED8E8B81F497CFBBF609 /* PBXTargetDependency */,
+			);
+			name = SupportDeskTests;
+			packageProductDependencies = (
+			);
+			productName = SupportDeskTests;
+			productReference = D2B9D86C7224BBD30E90D64D /* SupportDeskTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5AB99EDD1605FDE8596279FC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					A32492E7B88D095BF0258512 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					E3CDDBD16FFE0AEC680E787A = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 2A297BDA85408195A1691B06 /* Build configuration list for PBXProject "SupportDesk" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = DB0E075B26A8062D17172728;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = E13C1DB10B054DC8803B69E2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A32492E7B88D095BF0258512 /* SupportDesk */,
+				E3CDDBD16FFE0AEC680E787A /* SupportDeskTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		675C228B56D9DAD5E37252A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F41F81D6FDE6572E9E665E9D /* APIClientTests.swift in Sources */,
+				7404D4E59894F5BC963E4EBE /* Fixtures.swift in Sources */,
+				D8C4D59A338287C5F47472B0 /* ModelDecodingTests.swift in Sources */,
+				24BDBFD021A31F56AC7852A1 /* TicketFormTests.swift in Sources */,
+				F93D034F109EE65270078E36 /* WordingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2E1C70E839D0667AC118D32 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32940FDD3A06814F49541CF8 /* APIClient.swift in Sources */,
+				6AEA622E97D95E50A28D9775 /* AllTicketsView.swift in Sources */,
+				6999EEFAE750A82BE7A88A8C /* ApiStatusView.swift in Sources */,
+				7C42175DFE59CA1B1096B327 /* AppState.swift in Sources */,
+				2A0DFA10FB80C57DDFEEDAE1 /* ClassificationCardView.swift in Sources */,
+				859609EA42D5323DA3DDACAF /* Components.swift in Sources */,
+				D144D60AEC5D00A761D9C4A7 /* DecisionLogView.swift in Sources */,
+				F8286D90AF65B24E2F05DD04 /* Formatting.swift in Sources */,
+				71842E42757106B0BCF38453 /* ImportView.swift in Sources */,
+				05A2371263E03191D598A121 /* MultiSelectMenu.swift in Sources */,
+				F27016C7165E8A3E31BD8123 /* QueueView.swift in Sources */,
+				82E84FA19A14E1503C77C80C /* RootView.swift in Sources */,
+				91146E1A5B9B79810220ED76 /* SupportDeskApp.swift in Sources */,
+				DE4D39ED575B3872F1B1E3EB /* Theme.swift in Sources */,
+				A9656286FBF91DE98DE9BAD2 /* Ticket.swift in Sources */,
+				1C3644BA909A47B4CFED0374 /* TicketCardView.swift in Sources */,
+				B251E1BF4FF7D59577879A9C /* TicketDetailView.swift in Sources */,
+				9B1197D57B0B32007579E20E /* TicketForm.swift in Sources */,
+				73616003087E51ABAB59B94D /* TicketFormView.swift in Sources */,
+				F6DCCEB8C152BC96555EAED0 /* TicketListLoader.swift in Sources */,
+				CF20D3392C234552310289D9 /* Wording.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0E82ED8E8B81F497CFBBF609 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A32492E7B88D095BF0258512 /* SupportDesk */;
+			targetProxy = 52B49EB4CAF29B6723B616CF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		08A32B881FAD0C6D3E01FE56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		1B09AF6C429688C6FEA13561 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SupportDesk/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Switchboard;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.slipoy.SupportDesk;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		29756548146FC8B5B63F26F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		665A971D5B0CB266B5F32A2D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.slipoy.SupportDeskTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SupportDesk.app/SupportDesk";
+			};
+			name = Release;
+		};
+		9C43DBEA308CD542C6DC7F9B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SupportDesk/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Switchboard;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.slipoy.SupportDesk;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		D096B362E1DAE242DF252D9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.slipoy.SupportDeskTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SupportDesk.app/SupportDesk";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2A297BDA85408195A1691B06 /* Build configuration list for PBXProject "SupportDesk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				29756548146FC8B5B63F26F9 /* Debug */,
+				08A32B881FAD0C6D3E01FE56 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		57C30171C93C2346DA33444E /* Build configuration list for PBXNativeTarget "SupportDesk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C43DBEA308CD542C6DC7F9B /* Debug */,
+				1B09AF6C429688C6FEA13561 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A4A5D581241E75DE164C672C /* Build configuration list for PBXNativeTarget "SupportDeskTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D096B362E1DAE242DF252D9A /* Debug */,
+				665A971D5B0CB266B5F32A2D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5AB99EDD1605FDE8596279FC /* Project object */;
+}
