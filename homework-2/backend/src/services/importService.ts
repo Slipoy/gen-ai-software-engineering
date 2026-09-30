@@ -1,6 +1,6 @@
 import { HttpError, type FieldError } from '../errors.js';
 import { parseImportFile, type ImportFormat } from '../importers/index.js';
-import { validateNewTicket } from '../validators/ticketValidator.js';
+import { choosesClassification, validateNewTicket } from '../validators/ticketValidator.js';
 import type { TicketService } from './ticketService.js';
 
 /** Protects the server from a single request creating an unbounded number of tickets. */
@@ -30,7 +30,7 @@ export interface ImportSummary {
 export class ImportService {
   constructor(private readonly tickets: TicketService) {}
 
-  async importFile(format: ImportFormat, content: string): Promise<ImportSummary> {
+  async importFile(format: ImportFormat, content: string, { autoClassify = false } = {}): Promise<ImportSummary> {
     // Throws ImportFormatError (400) when the file itself is unreadable.
     const records = parseImportFile(format, content);
 
@@ -54,7 +54,8 @@ export class ImportService {
         summary.failures.push({ record: index + 1, location, errors: result.errors });
         continue;
       }
-      const ticket = await this.tickets.create(result.value);
+      // A category/priority given in the file counts as a decision made by the source system.
+      const ticket = await this.tickets.create(result.value, { autoClassify, manualOverride: choosesClassification(data) });
       summary.created_ids.push(ticket.id);
     }
 

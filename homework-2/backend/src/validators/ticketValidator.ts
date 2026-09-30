@@ -27,7 +27,23 @@ type Parser<T> = (value: unknown, field: string, errors: FieldError[]) => Parsed
 // complex and rejects almost nothing extra in practice; real ownership is proven by sending mail.
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-const SERVER_OWNED_FIELDS = new Set(['id', 'created_at', 'updated_at', 'resolved_at']);
+const SERVER_OWNED_FIELDS = new Set([
+  'id',
+  'created_at',
+  'updated_at',
+  'resolved_at',
+  'classification',
+  'manual_override',
+]);
+
+/**
+ * True when the request explicitly chose a category or priority. Such a ticket is treated as a
+ * manual decision that the auto-classifier must not overwrite. Checked on the raw body, because
+ * after validation defaults make "not sent" and "sent medium" look the same.
+ */
+export function choosesClassification(body: unknown): boolean {
+  return isObject(body) && (body.category !== undefined || body.priority !== undefined);
+}
 
 const isObject = (value: unknown): value is Record<string, unknown> =>
   typeof value === 'object' && value !== null && !Array.isArray(value);

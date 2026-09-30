@@ -6,6 +6,8 @@
  * and the union type is derived from it, so the two can never drift apart.
  */
 
+import type { StoredClassification } from './classification.js';
+
 export const CATEGORIES = [
   'account_access',
   'technical_issue',
@@ -52,6 +54,13 @@ export interface Ticket {
   assigned_to: string | null;
   tags: string[];
   metadata: TicketMetadata;
+  /** Latest automatic classification, including its confidence. `null` until the classifier has run. */
+  classification: StoredClassification | null;
+  /**
+   * True when a person chose category/priority (on create or via PUT). The classifier then keeps
+   * their values instead of overwriting them, unless it is run with `force`.
+   */
+  manual_override: boolean;
 }
 
 /** Fields a client sends to create a ticket. Everything the server owns (id, timestamps) is excluded. */

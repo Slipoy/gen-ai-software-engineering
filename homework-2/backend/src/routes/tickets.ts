@@ -5,7 +5,8 @@ import { detectFormat } from '../importers/index.js';
 import type { ImportService } from '../services/importService.js';
 import type { TicketService } from '../services/ticketService.js';
 import { validateTicketFilters } from '../validators/filterValidator.js';
-import { validateNewTicket, validateTicketUpdate } from '../validators/ticketValidator.js';
+import { readBooleanFlag } from '../validators/queryFlags.js';
+import { choosesClassification, validateNewTicket, validateTicketUpdate } from '../validators/ticketValidator.js';
 
 export const MAX_IMPORT_FILE_BYTES = 5 * 1024 * 1024;
 
@@ -26,11 +27,16 @@ const upload = multer({
 export function ticketsRouter(service: TicketService, importer: ImportService): Router {
   const router = Router();
 
+  // `?auto_classify=true` runs the classifier before the ticket is saved.
   router.post('/', async (req, res) => {
+    const autoClassify = readBooleanFlag(req.query, 'auto_classify');
     const result = validateNewTicket(req.body);
     if (!result.ok) throw new ValidationError(result.errors);
 
-    const ticket = await service.create(result.value);
+    const ticket = await service.create(result.value, {
+      autoClassify,
+      manualOverride: choosesClassification(req.body),
+    });
     res.status(201).location(`/tickets/${ticket.id}`).json(ticket);
   });
 
@@ -45,7 +51,9 @@ export function ticketsRouter(service: TicketService, importer: ImportService): 
       filename: req.file.originalname,
       mimeType: req.file.mimetype,
     });
-    const summary = await importer.importFile(format, req.file.buffer.toString('utf8'));
+    const summary = await importer.importFile(format, req.file.buffer.toString('utf8'), {
+      autoClassify: readBooleanFlag(req.query, 'auto_classify'),
+    });
     res.status(200).json(summary);
   });
 
@@ -65,6 +73,16 @@ export function ticketsRouter(service: TicketService, importer: ImportService): 
     if (!result.ok) throw new ValidationError(result.errors);
 
     res.json(await service.update(req.params.id, result.value));
+  });
+
+  // `?force=true` applies the result even when an agent has set category/priority manually.
+  router.post('/:id/auto-classify', async (req, res) => {
+    const force = readBooleanFlag(req.query, 'force');
+    res.json(await service.autoClassify(req.params.id, { force }));
+  });
+
+  router.get('/:id/classifications', async (req, res) => {
+    res.json(await service.classificationHistory(req.params.id));
   });
 
   router.delete('/:id', async (req, res) => {
