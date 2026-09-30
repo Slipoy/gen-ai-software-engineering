@@ -1,7 +1,7 @@
 import request from 'supertest';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { parseXml } from '../src/importers/xmlImporter.js';
-import { createTestApp, uploadFile } from './helpers.js';
+import { createTestApp, failedFields, uploadFile, uploadFixture } from './helpers.js';
 
 const ticketXml = (overrides: Record<string, string> = {}) => {
   const fields = {
@@ -89,5 +89,29 @@ describe('POST /tickets/import with XML', () => {
 
     expect(res.status).toBe(400);
     expect(JSON.stringify(res.body)).not.toContain('root:');
+  });
+});
+
+describe('XML sample fixtures', () => {
+  it('imports all 30 tickets from sample_tickets.xml, with tags and metadata', async () => {
+    const res = await uploadFixture(app, 'sample_tickets.xml');
+
+    expect(res.body).toMatchObject({ format: 'xml', total: 30, successful: 30, failed: 0 });
+    const [first] = (await request(app).get('/tickets?search=password%20reset')).body;
+    expect(first.tags.length).toBeGreaterThan(0);
+    expect(first.metadata.source).toBeDefined();
+  });
+
+  it('reports exactly the broken records of invalid_tickets.xml', async () => {
+    const res = await uploadFixture(app, 'invalid_tickets.xml');
+
+    expect(res.body).toMatchObject({ total: 6, successful: 2, failed: 4 });
+    expect(failedFields(res.body)).toEqual([['customer_email'], ['description'], ['category', 'priority'], ['subject']]);
+  });
+
+  it('rejects malformed.xml as a whole file', async () => {
+    const res = await uploadFixture(app, 'malformed.xml');
+    expect(res.status).toBe(400);
+    expect(res.body.message).toMatch(/^Could not read XML file/);
   });
 });

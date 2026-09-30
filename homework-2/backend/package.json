@@ -15,7 +15,8 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "generate:fixtures": "tsx scripts/generate-fixtures.ts"
   },
   "dependencies": {
     "csv-parse": "^7.0.3",

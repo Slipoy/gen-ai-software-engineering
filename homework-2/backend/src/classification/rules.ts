@@ -81,7 +81,7 @@ export const CATEGORY_RULES: Record<Exclude<Category, 'other'>, KeywordRule[]> =
 export const PRIORITY_RULES: { priority: Exclude<Priority, 'medium'>; terms: string[] }[] = [
   {
     priority: 'urgent',
-    terms: ["can't access", 'cannot access', 'can not access', 'critical', 'production down', 'prod down', 'security', 'urgent', 'emergency', 'data loss'],
+    terms: ["can't access", 'cannot access', 'can not access', 'critical', 'production down', 'production is down', 'prod down', 'prod is down', 'security', 'urgent', 'emergency', 'data loss'],
   },
   {
     priority: 'high',

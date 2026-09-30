@@ -1,0 +1,396 @@
+[
+  {
+    "customer_id": "JSON-0001",
+    "customer_email": "kira.weber@acme.test",
+    "customer_name": "Kira Weber",
+    "subject": "Cannot log in after password reset",
+    "description": "I reset my password this morning, but the login page still says my credentials are invalid.",
+    "category": "account_access",
+    "priority": "medium",
+    "status": "new",
+    "assigned_to": null,
+    "tags": [
+      "login",
+      "password"
+    ],
+    "metadata": {
+      "source": "chat",
+      "browser": "Edge 128",
+      "device_type": "mobile"
+    }
+  },
+  {
+    "customer_id": "JSON-0002",
+    "customer_email": "ines.weber@northwind.example",
+    "customer_name": "Ines Weber",
+    "subject": "Calendar sync stopped working",
+    "description": "The calendar sync with our Google account stopped working yesterday; new events no longer appear. We see this as a security concern.",
+    "category": "technical_issue",
+    "priority": "urgent",
+    "status": "new",
+    "assigned_to": null,
+    "tags": [
+      "sync",
+      "calendar"
+    ],
+    "metadata": {
+      "source": "api",
+      "browser": "Firefox 130",
+      "device_type": "desktop"
+    }
+  },
+  {
+    "customer_id": "JSON-0003",
+    "customer_email": "ben.novak@contoso.example",
+    "customer_name": "Ben Novak",
+    "subject": "Payment method update failed",
+    "description": "I tried to update the card used for payment, but the billing page does not save the new card. It is only a minor issue.",
+    "category": "billing_question",
+    "priority": "low",
+    "status": "closed",
+    "assigned_to": "agent.jones",
+    "tags": [
+      "payment",
+      "card"
+    ],
+    "metadata": {
+      "source": "web_form",
+      "browser": "Safari 17",
+      "device_type": "desktop"
+    }
+  },
+  {
+    "customer_id": "JSON-0004",
+    "customer_email": "grace.keller@example.com",
+    "customer_name": "Grace Keller",
+    "subject": "Date picker shows the wrong month",
+    "description": "Since the last update the date picker opens on the previous month. Steps to reproduce: open any form with a date field. It is only a minor issue.",
+    "category": "bug_report",
+    "priority": "low",
+    "status": "in_progress",
+    "assigned_to": "agent.garcia",
+    "tags": [
+      "date-picker",
+      "regression"
+    ],
+    "metadata": {
+      "source": "api",
+      "browser": "Edge 128",
+      "device_type": "desktop"
+    }
+  },
+  {
+    "customer_id": "JSON-0005",
+    "customer_email": "yuki.kowalski@example.com",
+    "customer_name": "Yuki Kowalski",
+    "subject": "Request for a product demo",
+    "description": "Our new team lead asks for a short product demo for the whole department next week. We see this as a security concern.",
+    "category": "other",
+    "priority": "urgent",
+    "status": "new",
+    "assigned_to": null,
+    "tags": [
+      "demo"
+    ],
+    "metadata": {
+      "source": "web_form",
+      "browser": "Edge 128",
+      "device_type": "tablet"
+    }
+  },
+  {
+    "customer_id": "JSON-0006",
+    "customer_email": "tara.keller@contoso.example",
+    "customer_name": "Tara Keller",
+    "subject": "App crashes on startup",
+    "description": "The mobile app crashes every time I open it. It shows the splash screen and then closes. Just a suggestion.",
+    "category": "technical_issue",
+    "priority": "low",
+    "status": "new",
+    "assigned_to": null,
+    "tags": [
+      "crash",
+      "mobile"
+    ],
+    "metadata": {
+      "source": "chat",
+      "browser": "Safari 17",
+      "device_type": "tablet"
+    }
+  },
+  {
+    "customer_id": "JSON-0007",
+    "customer_email": "rosa.kowalski@contoso.example",
+    "customer_name": "Rosa Kowalski",
+    "subject": "Question about annual plan pricing",
+    "description": "What is the price difference between the monthly and the annual plan, and can we switch mid-year?",
+    "category": "billing_question",
+    "priority": "medium",
+    "status": "resolved",
+    "assigned_to": "agent.jones",
+    "tags": [
+      "pricing",
+      "plan"
+    ],
+    "metadata": {
+      "source": "email",
+      "browser": null,
+      "device_type": "tablet"
+    }
+  },
+  {
+    "customer_id": "JSON-0008",
+    "customer_email": "grace.silva@contoso.example",
+    "customer_name": "Grace Silva",
+    "subject": "Custom fields on tickets",
+    "description": "Could you add support for custom fields on tickets? We need to track the contract number. This is blocking our team.",
+    "category": "feature_request",
+    "priority": "high",
+    "status": "closed",
+    "assigned_to": "agent.jones",
+    "tags": [
+      "tickets",
+      "customization"
+    ],
+    "metadata": {
+      "source": "chat",
+      "browser": "Chrome 128",
+      "device_type": "tablet"
+    }
+  },
+  {
+    "customer_id": "JSON-0009",
+    "customer_email": "tara.rossi@northwind.example",
+    "customer_name": "Tara Rossi",
+    "subject": "Partnership inquiry",
+    "description": "We are a consulting company and would be interested in becoming a reseller. Who should we talk to? Thanks in advance.",
+    "category": "other",
+    "priority": "medium",
+    "status": "in_progress",
+    "assigned_to": "agent.smith",
+    "tags": [
+      "sales"
+    ],
+    "metadata": {
+      "source": "email",
+      "browser": null,
+      "device_type": "mobile"
+    }
+  },
+  {
+    "customer_id": "JSON-0010",
+    "customer_email": "pavel.moreau@contoso.example",
+    "customer_name": "Pavel Moreau",
+    "subject": "SSO login redirects in a loop",
+    "description": "When I sign in with single sign-on, the page keeps redirecting back to the login screen. This is important for tomorrow.",
+    "category": "account_access",
+    "priority": "high",
+    "status": "new",
+    "assigned_to": null,
+    "tags": [
+      "sso",
+      "login"
+    ],
+    "metadata": {
+      "source": "api",
+      "browser": "Firefox 130",
+      "device_type": "mobile"
+    }
+  },
+  {
+    "customer_id": "JSON-0011",
+    "customer_email": "olga.keller@northwind.example",
+    "customer_name": "Olga Keller",
+    "subject": "Charged twice this month",
+    "description": "I see two charges on my credit card for the same subscription this month. Please refund one of them. It is only a minor issue.",
+    "category": "billing_question",
+    "priority": "low",
+    "status": "new",
+    "assigned_to": null,
+    "tags": [
+      "billing",
+      "refund"
+    ],
+    "metadata": {
+      "source": "chat",
+      "browser": "Firefox 130",
+      "device_type": "tablet"
+    }
+  },
+  {
+    "customer_id": "JSON-0012",
+    "customer_email": "david.ortiz@example.com",
+    "customer_name": "David Ortiz",
+    "subject": "Integration with Slack",
+    "description": "Please add an integration with Slack so new ticket updates can be posted to our team channel. Please help ASAP.",
+    "category": "feature_request",
+    "priority": "high",
+    "status": "new",
+    "assigned_to": null,
+    "tags": [
+      "integration",
+      "slack"
+    ],
+    "metadata": {
+      "source": "phone",
+      "browser": null,
+      "device_type": "mobile"
+    }
+  },
+  {
+    "customer_id": "JSON-0013",
+    "customer_email": "tara.keller@northwind.example",
+    "customer_name": "Tara Keller",
+    "subject": "Typo on the settings page",
+    "description": "There is a typo in the heading of the notification settings page: it says Notifcations.",
+    "category": "bug_report",
+    "priority": "low",
+    "status": "in_progress",
+    "assigned_to": "agent.garcia",
+    "tags": [
+      "typo",
+      "ui"
+    ],
+    "metadata": {
+      "source": "api",
+      "browser": "Firefox 130",
+      "device_type": "mobile"
+    }
+  },
+  {
+    "customer_id": "JSON-0014",
+    "customer_email": "ines.rossi@northwind.example",
+    "customer_name": "Ines Rossi",
+    "subject": "2FA code never arrives",
+    "description": "The verification code SMS for two-factor authentication never reaches my phone, so I am locked out.",
+    "category": "account_access",
+    "priority": "medium",
+    "status": "resolved",
+    "assigned_to": "agent.jones",
+    "tags": [
+      "2fa"
+    ],
+    "metadata": {
+      "source": "api",
+      "browser": "Firefox 130",
+      "device_type": "mobile"
+    }
+  },
+  {
+    "customer_id": "JSON-0015",
+    "customer_email": "kira.rossi@contoso.example",
+    "customer_name": "Kira Rossi",
+    "subject": "Uploads fail with an error",
+    "description": "Every file upload fails with an error message saying the server is unavailable. Nothing gets saved. This is important for tomorrow.",
+    "category": "technical_issue",
+    "priority": "high",
+    "status": "in_progress",
+    "assigned_to": "agent.smith",
+    "tags": [
+      "upload"
+    ],
+    "metadata": {
+      "source": "web_form",
+      "browser": "Edge 128",
+      "device_type": "desktop"
+    }
+  },
+  {
+    "customer_id": "JSON-0016",
+    "customer_email": "grace.ortiz@acme.test",
+    "customer_name": "Grace Ortiz",
+    "subject": "Dark mode for the web app",
+    "description": "It would be great to have a dark mode in the web app. Many of us work late and the white screen is tiring. This is important for tomorrow.",
+    "category": "feature_request",
+    "priority": "high",
+    "status": "new",
+    "assigned_to": null,
+    "tags": [
+      "ui",
+      "dark-mode"
+    ],
+    "metadata": {
+      "source": "phone",
+      "browser": null,
+      "device_type": "mobile"
+    }
+  },
+  {
+    "customer_id": "JSON-0017",
+    "customer_email": "ines.weber@contoso.example",
+    "customer_name": "Ines Weber",
+    "subject": "Search ignores the status filter",
+    "description": "To reproduce: filter tickets by status Closed and search for any word. Expected: only closed tickets. Actual: all tickets. Just a suggestion.",
+    "category": "bug_report",
+    "priority": "low",
+    "status": "new",
+    "assigned_to": null,
+    "tags": [
+      "search",
+      "filters"
+    ],
+    "metadata": {
+      "source": "phone",
+      "browser": null,
+      "device_type": "mobile"
+    }
+  },
+  {
+    "customer_id": "JSON-0018",
+    "customer_email": "carla.schmidt@acme.test",
+    "customer_name": "Carla Schmidt",
+    "subject": "Where can I find your GDPR documents?",
+    "description": "Our legal team asks for your data processing agreement and a list of sub-processors. Please treat this as urgent.",
+    "category": "other",
+    "priority": "urgent",
+    "status": "new",
+    "assigned_to": null,
+    "tags": [
+      "legal"
+    ],
+    "metadata": {
+      "source": "phone",
+      "browser": null,
+      "device_type": "desktop"
+    }
+  },
+  {
+    "customer_id": "JSON-0019",
+    "customer_email": "ben.ortiz@contoso.example",
+    "customer_name": "Ben Ortiz",
+    "subject": "Dashboard does not load",
+    "description": "The dashboard is stuck on a blank page and the browser console shows a timeout error. It is only a minor issue.",
+    "category": "technical_issue",
+    "priority": "low",
+    "status": "new",
+    "assigned_to": null,
+    "tags": [
+      "dashboard"
+    ],
+    "metadata": {
+      "source": "chat",
+      "browser": "Firefox 130",
+      "device_type": "mobile"
+    }
+  },
+  {
+    "customer_id": "JSON-0020",
+    "customer_email": "noah.weber@example.com",
+    "customer_name": "Noah Weber",
+    "subject": "Refund for cancelled subscription",
+    "description": "I cancelled my subscription last week but was still billed for the next month. Can I get a refund? It is only a minor issue.",
+    "category": "billing_question",
+    "priority": "low",
+    "status": "in_progress",
+    "assigned_to": "agent.jones",
+    "tags": [
+      "refund",
+      "subscription"
+    ],
+    "metadata": {
+      "source": "web_form",
+      "browser": "Firefox 130",
+      "device_type": "mobile"
+    }
+  }
+]

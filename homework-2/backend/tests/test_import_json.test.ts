@@ -4,7 +4,7 @@ import { detectFormat } from '../src/importers/index.js';
 import { parseJson } from '../src/importers/jsonImporter.js';
 import { MAX_IMPORT_RECORDS } from '../src/services/importService.js';
 import { MAX_IMPORT_FILE_BYTES } from '../src/routes/tickets.js';
-import { createTestApp, uploadFile, validTicket } from './helpers.js';
+import { createTestApp, failedFields, uploadFile, uploadFixture, validTicket } from './helpers.js';
 
 let app: ReturnType<typeof createTestApp>['app'];
 beforeEach(() => {
@@ -98,5 +98,27 @@ describe('upload handling and format detection', () => {
     const unknown = await uploadFile(app, 'hello', 'notes.txt');
     expect(unknown.status).toBe(400);
     expect(unknown.body.error).toBe('Unsupported format');
+  });
+});
+
+describe('JSON sample fixtures', () => {
+  it('imports all 20 tickets from sample_tickets.json', async () => {
+    const res = await uploadFixture(app, 'sample_tickets.json');
+    expect(res.body).toMatchObject({ format: 'json', total: 20, successful: 20, failed: 0 });
+  });
+
+  it('reports exactly the broken records of invalid_tickets.json', async () => {
+    const res = await uploadFixture(app, 'invalid_tickets.json');
+
+    expect(res.body).toMatchObject({ total: 6, successful: 2, failed: 4 });
+    expect(failedFields(res.body)).toEqual([['customer_email'], ['description'], ['category', 'priority'], ['subject']]);
+  });
+
+  it('rejects malformed.json and wrong_structure.json as whole files', async () => {
+    expect((await uploadFixture(app, 'malformed.json')).status).toBe(400);
+
+    const wrong = await uploadFixture(app, 'wrong_structure.json');
+    expect(wrong.status).toBe(400);
+    expect(wrong.body.message).toMatch(/expected an array of tickets/);
   });
 });

@@ -1,7 +1,7 @@
 import request from 'supertest';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { csvRowToTicket, parseCsv } from '../src/importers/csvImporter.js';
-import { createTestApp, uploadFile } from './helpers.js';
+import { createTestApp, failedFields, uploadFile, uploadFixture } from './helpers.js';
 
 const HEADER =
   'customer_id,customer_email,customer_name,subject,description,category,priority,status,assigned_to,tags,metadata_source,metadata_browser,metadata_device_type';
@@ -105,5 +105,27 @@ describe('POST /tickets/import with CSV', () => {
     const res = await uploadFile(app, `${HEADER}\n`, 'tickets.csv');
     expect(res.status).toBe(400);
     expect(res.body).toEqual({ error: 'Empty import file', message: 'The file contains no tickets' });
+  });
+});
+
+describe('CSV sample fixtures', () => {
+  it('imports all 50 tickets from sample_tickets.csv, including multi-line descriptions', async () => {
+    const res = await uploadFixture(app, 'sample_tickets.csv');
+
+    expect(res.body).toMatchObject({ format: 'csv', total: 50, successful: 50, failed: 0 });
+    const tickets = (await request(app).get('/tickets?category=bug_report')).body;
+    expect(tickets.some((t: { description: string }) => t.description.includes('\n1. Open Reports'))).toBe(true);
+  });
+
+  it('reports exactly the broken rows of invalid_tickets.csv', async () => {
+    const res = await uploadFixture(app, 'invalid_tickets.csv');
+
+    expect(res.body).toMatchObject({ total: 6, successful: 2, failed: 4 });
+    expect(failedFields(res.body)).toEqual([['customer_email'], ['description'], ['category', 'priority'], ['subject']]);
+  });
+
+  it('rejects malformed.csv and header_only.csv as whole files', async () => {
+    expect((await uploadFixture(app, 'malformed.csv')).status).toBe(400);
+    expect((await uploadFixture(app, 'header_only.csv')).body.error).toBe('Empty import file');
   });
 });
