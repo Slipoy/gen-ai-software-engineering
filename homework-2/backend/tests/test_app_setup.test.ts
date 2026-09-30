@@ -6,12 +6,13 @@ import { HttpError, NotFoundError, ValidationError } from '../src/errors.js';
 import { errorHandler } from '../src/middleware/errorHandler.js';
 
 describe('loadConfig', () => {
-  it('defaults to port 3000', () => {
-    expect(loadConfig({})).toEqual({ port: 3000 });
+  it('defaults to port 3000 and data/tickets.db', () => {
+    expect(loadConfig({})).toEqual({ port: 3000, dbPath: 'data/tickets.db' });
   });
 
-  it('reads PORT from the environment', () => {
-    expect(loadConfig({ PORT: '4000' })).toEqual({ port: 4000 });
+  it('reads PORT and DB_PATH from the environment', () => {
+    expect(loadConfig({ PORT: '4000', DB_PATH: ':memory:' })).toEqual({ port: 4000, dbPath: ':memory:' });
+    expect(loadConfig({ DB_PATH: '  ' }).dbPath).toBe('data/tickets.db');
   });
 
   it.each(['abc', '0', '70000', '3000.5'])('rejects PORT=%s', (port) => {

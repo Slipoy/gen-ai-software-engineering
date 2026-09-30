@@ -18,6 +18,10 @@ export class InMemoryClassificationLog implements ClassificationLog {
   }
 
   async listByTicket(ticketId: string): Promise<ClassificationDecision[]> {
-    return this.decisions.filter((d) => d.ticket_id === ticketId).map((d) => structuredClone(d));
+    return this.decisions
+      .filter((d) => d.ticket_id === ticketId)
+      // Array.prototype.sort is stable, so entries with the same timestamp keep insertion order.
+      .sort((a, b) => a.at.localeCompare(b.at))
+      .map((d) => structuredClone(d));
   }
 }

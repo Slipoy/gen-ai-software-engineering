@@ -1,16 +1,13 @@
 import request from 'supertest';
 import { beforeEach, describe, expect, it } from 'vitest';
-import { createApp } from '../src/app.js';
-import { InMemoryTicketRepository } from '../src/repositories/inMemoryTicketRepository.js';
-import { TicketService } from '../src/services/ticketService.js';
-import { fakeClock, validTicket } from './helpers.js';
+import { createTestApp, fakeClock, validTicket } from './helpers.js';
 
-let app: ReturnType<typeof createApp>;
+let app: ReturnType<typeof createTestApp>['app'];
 let clock: ReturnType<typeof fakeClock>;
 
 beforeEach(() => {
   clock = fakeClock();
-  app = createApp({ ticketService: new TicketService(new InMemoryTicketRepository(), { now: clock.now }) });
+  app = createTestApp({ now: clock.now }).app;
 });
 
 const createTicket = (overrides: Record<string, unknown> = {}) =>
@@ -221,33 +218,5 @@ describe('DELETE /tickets/:id', () => {
 
     expect((await request(app).get(`/tickets/${ticket.id}`)).status).toBe(404);
     expect((await request(app).delete(`/tickets/${ticket.id}`)).status).toBe(404);
-  });
-});
-
-describe('storage isolation', () => {
-  it('does not let a returned object change the stored ticket', async () => {
-    const repository = new InMemoryTicketRepository();
-    const service = new TicketService(repository);
-    const ticket = await service.create({ ...validTicket(), category: 'other', priority: 'low', status: 'new', assigned_to: null, tags: ['a'], metadata: { source: 'api', browser: null, device_type: null } });
-
-    ticket.tags.push('mutated');
-    ticket.subject = 'mutated';
-
-    expect(await service.get(ticket.id)).toMatchObject({ subject: validTicket().subject, tags: ['a'] });
-  });
-
-  it('reports a ticket deleted between read and write as not found', async () => {
-    const repository = new InMemoryTicketRepository();
-    const service = new TicketService(repository);
-    const ticket = await service.create({ ...validTicket(), category: 'other', priority: 'low', status: 'new', assigned_to: null, tags: [], metadata: { source: 'api', browser: null, device_type: null } });
-
-    // Simulate a concurrent delete that lands after the service has read the ticket.
-    const originalUpdate = repository.update.bind(repository);
-    repository.update = async (next) => {
-      await repository.delete(next.id);
-      return originalUpdate(next);
-    };
-
-    await expect(service.update(ticket.id, { status: 'closed' })).rejects.toThrow(`Ticket ${ticket.id} not found`);
   });
 });

@@ -3,7 +3,9 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import request from 'supertest';
 import { createApp } from '../src/app.js';
-import { InMemoryTicketRepository } from '../src/repositories/inMemoryTicketRepository.js';
+import { openDatabase } from '../src/db/client.js';
+import { SqliteClassificationLog } from '../src/repositories/sqliteClassificationLog.js';
+import { SqliteTicketRepository } from '../src/repositories/sqliteTicketRepository.js';
 import { TicketService } from '../src/services/ticketService.js';
 
 /** A minimal valid create request; tests override one field at a time. */
@@ -27,10 +29,17 @@ export function fakeClock(start = '2026-01-01T10:00:00.000Z') {
   };
 }
 
-/** A fresh app with its own empty in-memory store. */
+/**
+ * A fresh app on its own empty SQLite database in memory, wired exactly like index.ts.
+ * API tests therefore exercise the real SQL queries, but each test starts from a clean slate.
+ */
 export function createTestApp(options: { now?: () => Date } = {}) {
-  const service = new TicketService(new InMemoryTicketRepository(), options);
-  return { app: createApp({ ticketService: service }), service };
+  const { db } = openDatabase(':memory:');
+  const service = new TicketService(new SqliteTicketRepository(db), {
+    ...options,
+    classificationLog: new SqliteClassificationLog(db),
+  });
+  return { app: createApp({ ticketService: service }), service, db };
 }
 
 /** Uploads `content` to POST /tickets/import as a multipart file. */
