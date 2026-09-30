@@ -3,6 +3,7 @@ import { useTickets } from '../api/queries';
 import { PRIORITIES, type Priority, type Ticket } from '../api/types';
 import { FilterBar } from '../components/FilterBar';
 import { EmptyState, ErrorState, LoadingState } from '../components/QueryState';
+import { SplitView } from '../components/SplitView';
 import { TicketCard } from '../components/TicketCard';
 import { useTicketFilters } from '../hooks/useTicketFilters';
 import { useTicketLink } from '../hooks/useTicketLink';
@@ -29,45 +30,47 @@ export function QueuePage() {
     : undefined;
 
   return (
-    <div className={styles.page} aria-busy={isFetching}>
-      <FilterBar
-        values={filters.values}
-        onListChange={filters.setList}
-        onSearchChange={filters.setSearch}
-        onClear={filters.clear}
-        canClear={!filters.isDefault}
-        showPriority={false}
-        summary={summary}
-      />
+    <SplitView>
+      <div className={styles.page} aria-busy={isFetching}>
+        <FilterBar
+          values={filters.values}
+          onListChange={filters.setList}
+          onSearchChange={filters.setSearch}
+          onClear={filters.clear}
+          canClear={!filters.isDefault}
+          showPriority={false}
+          summary={summary}
+        />
 
-      {isPending ? (
-        <LoadingState />
-      ) : isError ? (
-        <ErrorState error={error} onRetry={() => refetch()} />
-      ) : tickets.length === 0 ? (
-        <EmptyState title="No tickets match these filters">
-          <span>Change the filters, or import sample tickets on the Import page.</span>
-        </EmptyState>
-      ) : (
-        <div className={styles.board}>
-          {columns.map((column) => (
-            <section key={column.priority} className={styles.column} data-priority={column.priority} aria-labelledby={`col-${column.priority}`}>
-              <h2 id={`col-${column.priority}`} className={styles.columnHeader}>
-                <span className={styles.columnName}>{PRIORITY_LABELS[column.priority]}</span>
-                <span className={styles.columnCount}>{column.tickets.length}</span>
-              </h2>
-              <ul className={styles.cards}>
-                {column.tickets.map((ticket) => (
-                  <li key={ticket.id}>
-                    <TicketCard ticket={ticket} selected={ticket.id === selectedId} to={linkTo(ticket.id)} />
-                  </li>
-                ))}
-                {column.tickets.length === 0 && <li className={styles.none}>Nothing here</li>}
-              </ul>
-            </section>
-          ))}
-        </div>
-      )}
-    </div>
+        {isPending ? (
+          <LoadingState />
+        ) : isError ? (
+          <ErrorState error={error} onRetry={() => refetch()} />
+        ) : tickets.length === 0 ? (
+          <EmptyState title="No tickets match these filters">
+            <span>Change the filters, or import sample tickets on the Import page.</span>
+          </EmptyState>
+        ) : (
+          <div className={styles.board}>
+            {columns.map((column) => (
+              <section key={column.priority} className={styles.column} data-priority={column.priority} aria-labelledby={`col-${column.priority}`}>
+                <h2 id={`col-${column.priority}`} className={styles.columnHeader}>
+                  <span className={styles.columnName}>{PRIORITY_LABELS[column.priority]}</span>
+                  <span className={styles.columnCount}>{column.tickets.length}</span>
+                </h2>
+                <ul className={styles.cards}>
+                  {column.tickets.map((ticket) => (
+                    <li key={ticket.id}>
+                      <TicketCard ticket={ticket} selected={ticket.id === selectedId} to={linkTo(ticket.id)} />
+                    </li>
+                  ))}
+                  {column.tickets.length === 0 && <li className={styles.none}>Nothing here</li>}
+                </ul>
+              </section>
+            ))}
+          </div>
+        )}
+      </div>
+    </SplitView>
   );
 }

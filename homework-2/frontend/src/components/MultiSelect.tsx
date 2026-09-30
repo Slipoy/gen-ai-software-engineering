@@ -30,7 +30,11 @@ export function MultiSelect<T extends string>({ label, options, selected, onChan
     const close = (event: Event) => {
       if (event instanceof KeyboardEvent && event.key !== 'Escape') return;
       if (event instanceof PointerEvent && details.contains(event.target as Node)) return;
-      if (details.open && event instanceof KeyboardEvent) details.querySelector('summary')?.focus();
+      if (details.open && event instanceof KeyboardEvent) {
+        // Escape was meant for this menu: keep it from also closing the ticket panel behind it.
+        event.stopPropagation();
+        details.querySelector('summary')?.focus();
+      }
       details.open = false;
     };
     document.addEventListener('pointerdown', close);
