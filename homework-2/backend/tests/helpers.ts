@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import request from 'supertest';
 import { createApp } from '../src/app.js';
 import { openDatabase } from '../src/db/client.js';
+import { parseCsv } from '../src/importers/csvImporter.js';
 import { SqliteClassificationLog } from '../src/repositories/sqliteClassificationLog.js';
 import { SqliteTicketRepository } from '../src/repositories/sqliteTicketRepository.js';
 import { TicketService } from '../src/services/ticketService.js';
@@ -42,8 +43,11 @@ export function createTestApp(options: { now?: () => Date } = {}) {
   return { app: createApp({ ticketService: service }), service, db };
 }
 
+/** What supertest can send requests to: an Express app, or the base URL of a running server. */
+export type RequestTarget = Parameters<typeof request>[0];
+
 /** Uploads `content` to POST /tickets/import as a multipart file. */
-export function uploadFile(app: ReturnType<typeof createApp>, content: string, filename: string, query = '') {
+export function uploadFile(app: RequestTarget, content: string, filename: string, query = '') {
   return request(app).post(`/tickets/import${query}`).attach('file', Buffer.from(content, 'utf8'), filename);
 }
 
@@ -55,11 +59,43 @@ export function readFixture(name: string): string {
 }
 
 /** Uploads a fixture file to POST /tickets/import under its own name. */
-export function uploadFixture(app: ReturnType<typeof createApp>, name: string, query = '') {
+export function uploadFixture(app: RequestTarget, name: string, query = '') {
   return uploadFile(app, readFixture(name), name, query);
 }
 
 /** The field names that failed, per failed record, from an import summary. */
 export function failedFields(summary: { failures: { errors: { field: string }[] }[] }) {
   return summary.failures.map((failure) => failure.errors.map((error) => error.field).sort());
+}
+
+const csvCell = (value: unknown) => {
+  const text = value === undefined || value === null ? '' : Array.isArray(value) ? value.join(';') : String(value);
+  return /[",\r\n]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
+};
+
+/**
+ * Serialises parsed ticket records back to CSV with the given columns (the inverse of csvRowToTicket):
+ * `metadata_*` columns read from `record.metadata`, `tags` is joined with ";".
+ * Used to build variations of the sample file (without labels, or with many rows).
+ */
+export function recordsToCsv(records: Record<string, unknown>[], columns: string[]): string {
+  const rows = records.map((record) =>
+    columns
+      .map((column) =>
+        column.startsWith('metadata_')
+          ? csvCell((record.metadata as Record<string, unknown> | undefined)?.[column.slice('metadata_'.length)])
+          : csvCell(record[column]),
+      )
+      .join(','),
+  );
+  return [columns.join(','), ...rows].join('\n');
+}
+
+/** The records and header columns of tests/fixtures/sample_tickets.csv. */
+export function sampleCsvRecords() {
+  const content = readFixture('sample_tickets.csv');
+  return {
+    columns: content.slice(0, content.indexOf('\n')).split(','),
+    records: parseCsv(content).map((r) => r.data),
+  };
 }
