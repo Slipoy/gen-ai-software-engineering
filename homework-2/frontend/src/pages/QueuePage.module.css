@@ -101,7 +101,12 @@
   text-align: center;
 }
 
-/* Narrower screens: two columns, then one. Priority tabs for phones come in step B6. */
+/* Priority tabs: only on phones. */
+.phoneTabs {
+  display: none;
+}
+
+/* Narrower screens: two columns; phones: one column at a time, picked with the priority tabs. */
 @media (max-width: 1100px) {
   .board {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -112,5 +117,57 @@
   .board {
     grid-template-columns: minmax(0, 1fr);
     padding: var(--space-4);
+  }
+
+  .phoneTabs {
+    position: sticky;
+    top: var(--header-height);
+    z-index: 5;
+    display: flex;
+    background: var(--surface-1);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .phoneTab {
+    --tab-color: var(--text-muted);
+    flex: 1 1 0;
+    min-height: 48px;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    font-weight: 600;
+  }
+
+  .phoneTab[data-priority='urgent'] {
+    --tab-color: var(--priority-urgent);
+  }
+
+  .phoneTab[data-priority='high'] {
+    --tab-color: var(--priority-high);
+  }
+
+  .phoneTab[data-priority='medium'] {
+    --tab-color: var(--priority-medium);
+  }
+
+  .phoneTab[aria-pressed='true'] {
+    border-bottom-color: var(--tab-color);
+    color: var(--tab-color);
+  }
+
+  .phoneTab .mono {
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  /* The tabs already name the priority, so the column heading is not repeated. */
+  .column:not([data-active-on-phone]) {
+    display: none;
+  }
+
+  .columnHeader {
+    display: none;
   }
 }

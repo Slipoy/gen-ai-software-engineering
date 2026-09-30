@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router';
+import { createBrowserRouter, type RouteObject } from 'react-router';
 import { Layout } from './components/Layout';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { QueuePage } from './pages/QueuePage';
@@ -10,7 +10,7 @@ import { TicketsPage } from './pages/TicketsPage';
  * The import page is loaded lazily: its code is a separate file fetched only when someone opens it,
  * so the queue (the screen agents open all day) loads less JavaScript.
  */
-export const router = createBrowserRouter([
+export const routes: RouteObject[] = [
   {
     element: <Layout />,
     children: [
@@ -23,4 +23,7 @@ export const router = createBrowserRouter([
       { path: '*', element: <NotFoundPage /> },
     ],
   },
-]);
+];
+
+/** The app's router. Tests build a memory router from the same `routes`. */
+export const router = createBrowserRouter(routes);

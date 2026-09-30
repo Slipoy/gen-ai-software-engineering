@@ -1,4 +1,4 @@
-import { memo, useMemo } from 'react';
+import { memo, useMemo, useState } from 'react';
 import { useTickets } from '../api/queries';
 import { PRIORITIES, type Priority, type Ticket } from '../api/types';
 import { FilterBar } from '../components/FilterBar';
@@ -15,6 +15,8 @@ const CARDS_PER_PAGE = 50;
 
 interface ColumnProps {
   priority: Priority;
+  /** On phones only one column is shown at a time; this is the one picked in the tabs. */
+  activeOnPhone: boolean;
   tickets: Ticket[];
   selectedId: string | null;
   searchFor: (id: string) => string;
@@ -23,10 +25,23 @@ interface ColumnProps {
 }
 
 /** One priority column. Shows the first 50 cards, then 50 more per click. */
-const BoardColumn = memo(function BoardColumn({ priority, tickets, selectedId, searchFor, resetKey }: ColumnProps) {
+const BoardColumn = memo(function BoardColumn({
+  priority,
+  activeOnPhone,
+  tickets,
+  selectedId,
+  searchFor,
+  resetKey,
+}: ColumnProps) {
   const { visible, hidden, showMore } = useIncrementalList(tickets, CARDS_PER_PAGE, resetKey);
   return (
-    <section className={styles.column} data-priority={priority} aria-labelledby={`col-${priority}`}>
+    <section
+      id={`column-${priority}`}
+      className={styles.column}
+      data-priority={priority}
+      data-active-on-phone={activeOnPhone || undefined}
+      aria-labelledby={`col-${priority}`}
+    >
       <h2 id={`col-${priority}`} className={styles.columnHeader}>
         <span className={styles.columnName}>{PRIORITY_LABELS[priority]}</span>
         <span className={styles.columnCount}>{tickets.length}</span>
@@ -60,6 +75,7 @@ export function QueuePage() {
   const { data: tickets, isPending, isError, error, refetch, isFetching } = useTickets(apiFilters);
   const { selectedId, searchFor } = useTicketLink();
   const resetKey = JSON.stringify(apiFilters);
+  const [phoneColumn, setPhoneColumn] = useState<Priority>('urgent');
 
   const columns = useMemo(() => {
     const byPriority: Record<Priority, Ticket[]> = { urgent: [], high: [], medium: [], low: [] };
@@ -93,19 +109,38 @@ export function QueuePage() {
             <span>Change the filters, or import sample tickets on the Import page.</span>
           </EmptyState>
         ) : (
-          <div className={styles.board}>
-            {columns.map((column) => (
-              <BoardColumn
-                key={column.priority}
-                priority={column.priority}
-                tickets={column.tickets}
-                // Only the column holding the selected ticket gets its id; the others keep equal props and skip rendering.
-                selectedId={column.tickets.some((ticket) => ticket.id === selectedId) ? selectedId : null}
-                searchFor={searchFor}
-                resetKey={resetKey}
-              />
-            ))}
-          </div>
+          <>
+            {/* Phones show one priority at a time, switched with these tabs (hidden on wider screens by CSS). */}
+            <div className={styles.phoneTabs} role="group" aria-label="Priority">
+              {columns.map((column) => (
+                <button
+                  key={column.priority}
+                  type="button"
+                  className={styles.phoneTab}
+                  data-priority={column.priority}
+                  aria-pressed={phoneColumn === column.priority}
+                  aria-controls={`column-${column.priority}`}
+                  onClick={() => setPhoneColumn(column.priority)}
+                >
+                  {PRIORITY_LABELS[column.priority]} <span className="mono">{column.tickets.length}</span>
+                </button>
+              ))}
+            </div>
+            <div className={styles.board}>
+              {columns.map((column) => (
+                <BoardColumn
+                  key={column.priority}
+                  priority={column.priority}
+                  activeOnPhone={phoneColumn === column.priority}
+                  tickets={column.tickets}
+                  // Only the column holding the selected ticket gets its id; the others keep equal props and skip rendering.
+                  selectedId={column.tickets.some((ticket) => ticket.id === selectedId) ? selectedId : null}
+                  searchFor={searchFor}
+                  resetKey={resetKey}
+                />
+              ))}
+            </div>
+          </>
         )}
       </div>
     </SplitView>

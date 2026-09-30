@@ -48,11 +48,16 @@ export function TicketForm({ mode, initialValues, submitLabel, submitting, serve
   const serverErrors: FormErrors = {};
   let serverMessage: string | undefined;
   if (serverError instanceof ApiError) {
+    let shownUnderAField = false;
     for (const detail of serverError.details) {
       const field = formFieldFor(detail.field);
-      if (field && !dismissedServerFields.has(field)) serverErrors[field] ??= detail.message;
+      if (!field) continue;
+      shownUnderAField = true;
+      if (!dismissedServerFields.has(field)) serverErrors[field] ??= detail.message;
     }
-    if (serverError.details.length === 0 || Object.keys(serverErrors).length === 0) serverMessage = serverError.message;
+    // A general message only when no error belongs to an input (e.g. 413, or an unknown field),
+    // decided before dismissals, so fixing a field does not turn its error into a banner.
+    if (!shownUnderAField) serverMessage = serverError.message;
   } else if (serverError) {
     serverMessage = 'Saving failed. Check your connection and try again.';
   }
