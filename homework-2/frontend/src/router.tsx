@@ -2,6 +2,8 @@ import { createBrowserRouter } from 'react-router';
 import { Layout } from './components/Layout';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { PlaceholderPage } from './pages/PlaceholderPage';
+import { QueuePage } from './pages/QueuePage';
+import { TicketsPage } from './pages/TicketsPage';
 
 /**
  * URL → screen map. Every screen renders inside <Layout> (header + nav).
@@ -11,14 +13,8 @@ export const router = createBrowserRouter([
   {
     element: <Layout />,
     children: [
-      {
-        index: true,
-        element: <PlaceholderPage title="Queue" description="Open tickets grouped by priority. The board arrives in step B2." />,
-      },
-      {
-        path: 'tickets',
-        element: <PlaceholderPage title="All tickets" description="Every ticket with filters and search. Arrives in step B2." />,
-      },
+      { index: true, element: <QueuePage /> },
+      { path: 'tickets', element: <TicketsPage /> },
       {
         path: 'import',
         element: <PlaceholderPage title="Import" description="Upload CSV, JSON or XML files. Arrives in step B5." />,

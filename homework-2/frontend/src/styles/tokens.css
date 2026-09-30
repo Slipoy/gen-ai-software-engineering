@@ -24,6 +24,7 @@
   --accent: #f3b04f;
   --accent-hover: #ffc26a;
   --accent-soft: rgba(243, 176, 79, 0.12);
+  --accent-text: #ffd28c;
   --on-accent: #1a1406;
 
   /* Priority colours: they also differ in lightness, not only hue */
