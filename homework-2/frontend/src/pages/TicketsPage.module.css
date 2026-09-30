@@ -22,6 +22,30 @@
   text-decoration: none;
 }
 
+a.row {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 58px;
+}
+
+.more {
+  margin-top: var(--space-3);
+  min-height: 42px;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.more:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.more .mono {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
 a.row:hover {
   color: var(--text);
   background: var(--surface-2);

@@ -69,6 +69,31 @@
   list-style: none;
 }
 
+.cards > li {
+  /* The browser skips layout and paint for cards far outside the viewport; the size is a placeholder estimate. */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 120px;
+}
+
+.more {
+  min-height: 40px;
+  border: 1px dashed var(--border-strong);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+}
+
+.more:hover {
+  border-color: var(--column-color);
+  color: var(--text);
+}
+
+.more .mono {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
 .none {
   padding: var(--space-4) 0;
   color: var(--text-muted);

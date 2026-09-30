@@ -33,6 +33,19 @@ describe('app skeleton', () => {
   });
 });
 
+describe('response compression', () => {
+  it('gzips large responses when the client accepts it, and leaves small ones as they are', async () => {
+    for (let i = 0; i < 20; i++) await createTicket({ customer_id: `GZ-${i}` });
+
+    const list = await request(app).get('/tickets').set('Accept-Encoding', 'gzip');
+    expect(list.headers['content-encoding']).toBe('gzip');
+    expect(list.body).toHaveLength(20); // supertest decompresses transparently
+
+    const health = await request(app).get('/health').set('Accept-Encoding', 'gzip');
+    expect(health.headers['content-encoding']).toBeUndefined();
+  });
+});
+
 describe('POST /tickets', () => {
   it('creates a ticket: 201, Location header, server-owned fields filled in', async () => {
     const res = await createTicket();

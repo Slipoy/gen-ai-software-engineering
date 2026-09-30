@@ -20,7 +20,7 @@ export function ApiStatus() {
   return (
     <span className={styles.status} data-state={state} role="status" title={isError ? 'Start the backend: npm run dev in backend/' : undefined}>
       <span className={styles.dot} aria-hidden="true" />
-      {label}
+      <span className={styles.label}>{label}</span>
     </span>
   );
 }

@@ -51,6 +51,7 @@
 .navLink {
   display: inline-flex;
   align-items: center;
+  white-space: nowrap;
   min-height: 36px;
   padding: 0 var(--space-3);
   border-radius: var(--radius-md);
@@ -86,6 +87,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  white-space: nowrap;
   min-height: 36px;
   padding: 0 var(--space-4);
   border: 0;
@@ -97,6 +99,25 @@
 
 .newTicket:hover {
   background: var(--accent-hover);
+}
+
+/* Medium widths (tablets, split screens): shorter controls so the header stays on one line. */
+@media (max-width: 900px) {
+  .newTicket {
+    width: 40px;
+    padding: 0;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .newTicketLabel {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
 }
 
 /* Phones: the brand name goes, navigation stays reachable with 44 px touch targets. */
@@ -120,21 +141,9 @@
     white-space: nowrap;
   }
 
-  /* Icon-only "New ticket" on phones; the label stays for screen readers. */
+  /* 44 px touch target on phones. */
   .newTicket {
     width: 44px;
     min-height: 44px;
-    padding: 0;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .newTicketLabel {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
   }
 }

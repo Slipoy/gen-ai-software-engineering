@@ -1,3 +1,4 @@
+import compression from 'compression';
 import express from 'express';
 import { errorHandler, notFoundHandler } from './middleware/errorHandler.js';
 import { InMemoryTicketRepository } from './repositories/inMemoryTicketRepository.js';
@@ -20,6 +21,9 @@ export function createApp({
   const app = express();
 
   app.disable('x-powered-by');
+  // gzip responses larger than 1 KB. A full ticket list is JSON with many repeated keys, so it
+  // shrinks by roughly 90%, which matters far more on a real network than on localhost.
+  app.use(compression({ threshold: 1024 }));
   app.use(express.json({ limit: '1mb' }));
 
   app.get('/health', (_req, res) => {

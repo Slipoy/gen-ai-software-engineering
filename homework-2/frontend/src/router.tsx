@@ -1,13 +1,14 @@
 import { createBrowserRouter } from 'react-router';
 import { Layout } from './components/Layout';
 import { NotFoundPage } from './pages/NotFoundPage';
-import { PlaceholderPage } from './pages/PlaceholderPage';
 import { QueuePage } from './pages/QueuePage';
 import { TicketsPage } from './pages/TicketsPage';
 
 /**
  * URL → screen map. Every screen renders inside <Layout> (header + nav).
- * Filters and the selected ticket will live in the URL (step B2), so a view can be bookmarked and shared.
+ * Filters and the selected ticket live in the URL, so a view can be bookmarked and shared.
+ * The import page is loaded lazily: its code is a separate file fetched only when someone opens it,
+ * so the queue (the screen agents open all day) loads less JavaScript.
  */
 export const router = createBrowserRouter([
   {
@@ -17,7 +18,7 @@ export const router = createBrowserRouter([
       { path: 'tickets', element: <TicketsPage /> },
       {
         path: 'import',
-        element: <PlaceholderPage title="Import" description="Upload CSV, JSON or XML files. Arrives in step B5." />,
+        lazy: async () => ({ Component: (await import('./pages/ImportPage')).ImportPage }),
       },
       { path: '*', element: <NotFoundPage /> },
     ],

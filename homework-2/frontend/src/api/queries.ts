@@ -113,3 +113,14 @@ export function useDeleteTicket() {
   });
 }
 
+
+/** Uploads a CSV/JSON/XML file. Afterwards every list is refetched so the imported tickets appear. */
+export function useImportTickets() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ file, autoClassify }: { file: File; autoClassify: boolean }) => ticketsApi.importFile(file, { autoClassify }),
+    onSuccess: (summary) => {
+      if (summary.successful > 0) void queryClient.invalidateQueries({ queryKey: ticketKeys.lists });
+    },
+  });
+}
