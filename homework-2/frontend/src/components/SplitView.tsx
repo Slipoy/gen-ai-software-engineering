@@ -9,7 +9,7 @@ export function SplitView({ children }: { children: ReactNode }) {
   return (
     <div className={styles.split}>
       <div className={styles.content}>{children}</div>
-      {selectedId && <TicketPanel ticketId={selectedId} />}
+      {selectedId && <TicketPanel key={selectedId} ticketId={selectedId} />}
     </div>
   );
 }

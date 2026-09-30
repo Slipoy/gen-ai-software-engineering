@@ -82,6 +82,23 @@
   min-height: 0;
 }
 
+.newTicket {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 0 var(--space-4);
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 700;
+}
+
+.newTicket:hover {
+  background: var(--accent-hover);
+}
+
 /* Phones: the brand name goes, navigation stays reachable with 44 px touch targets. */
 @media (max-width: 640px) {
   .header {
@@ -100,6 +117,24 @@
 
   .navLink {
     min-height: 44px;
+    white-space: nowrap;
+  }
+
+  /* Icon-only "New ticket" on phones; the label stays for screen readers. */
+  .newTicket {
+    width: 44px;
+    min-height: 44px;
+    padding: 0;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .newTicketLabel {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
     white-space: nowrap;
   }
 }

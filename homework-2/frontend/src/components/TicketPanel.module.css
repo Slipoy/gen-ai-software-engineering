@@ -20,8 +20,31 @@
 }
 
 .meta {
+  flex-grow: 1;
   font-size: 12px;
   color: var(--text-muted);
+}
+
+.edit {
+  min-height: 36px;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: transparent;
+  font-weight: 600;
+}
+
+.edit:hover {
+  border-color: var(--text-muted);
+}
+
+.editTitle {
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+
+.editTitle:focus {
+  outline: none;
 }
 
 .close {

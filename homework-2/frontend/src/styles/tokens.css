@@ -39,6 +39,7 @@
   --success-soft: rgba(111, 211, 154, 0.14);
   --danger: #ff8a7f;
   --danger-soft: rgba(255, 107, 94, 0.14);
+  --on-danger: #1c0906;
 
   /* Type */
   --font-sans: 'Manrope Variable', 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;

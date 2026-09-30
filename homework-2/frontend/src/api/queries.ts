@@ -1,6 +1,6 @@
 import { keepPreviousData, useMutation, useQuery, useQueryClient, type QueryClient } from '@tanstack/react-query';
 import { ticketsApi } from './tickets';
-import type { Ticket, TicketFilters } from './types';
+import type { NewTicket, Ticket, TicketFilters, TicketUpdate } from './types';
 
 /**
  * Query keys in one place. Everything under ['tickets'] is ticket data, so after any change
@@ -69,3 +69,47 @@ export function useAutoClassify() {
     },
   });
 }
+
+/** Creates a ticket, then refetches every list so it shows up on the board and in the table. */
+export function useCreateTicket() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ ticket, autoClassify }: { ticket: NewTicket; autoClassify: boolean }) =>
+      ticketsApi.create(ticket, { autoClassify }),
+    onSuccess: (created) => {
+      queryClient.setQueryData(ticketKeys.detail(created.id), created);
+      void queryClient.invalidateQueries({ queryKey: ticketKeys.lists });
+      void queryClient.invalidateQueries({ queryKey: ticketKeys.history(created.id) });
+    },
+  });
+}
+
+export function useUpdateTicket() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ id, changes }: { id: string; changes: TicketUpdate }) => ticketsApi.update(id, changes),
+    onSuccess: (updated) => {
+      queryClient.setQueryData(ticketKeys.detail(updated.id), updated);
+      void queryClient.invalidateQueries({ queryKey: ticketKeys.lists });
+      // Changing category/priority by hand adds an entry to the decision log.
+      void queryClient.invalidateQueries({ queryKey: ticketKeys.history(updated.id) });
+    },
+  });
+}
+
+/**
+ * Deletes a ticket and refetches the lists. The deleted ticket's own cache entries are left alone on purpose:
+ * removing them while its panel is still on screen makes the panel fetch it again (a needless 404). Once the
+ * panel closes they are unused and TanStack Query garbage-collects them; if the user goes Back to the ticket,
+ * the refetch correctly shows "Ticket not found".
+ */
+export function useDeleteTicket() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (id: string) => ticketsApi.remove(id),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ticketKeys.lists });
+    },
+  });
+}
+

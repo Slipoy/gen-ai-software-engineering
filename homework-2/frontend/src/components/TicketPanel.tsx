@@ -1,4 +1,4 @@
-import { useEffect, useRef, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { ApiError } from '../api/client';
 import { useTicket } from '../api/queries';
@@ -8,6 +8,7 @@ import { SOURCE_LABELS } from '../lib/labels';
 import { formatAge, formatDateTime } from '../lib/time';
 import { ClassificationCard } from './ClassificationCard';
 import { DecisionLog } from './DecisionLog';
+import { EditTicket } from './EditTicket';
 import { CategoryTag, PriorityBadge, StatusTag } from './Tag';
 import styles from './TicketPanel.module.css';
 
@@ -78,20 +79,25 @@ export function TicketPanel({ ticketId }: { ticketId: string }) {
   const { closeTo } = useTicketLink();
   const navigate = useNavigate();
   const panelRef = useRef<HTMLElement>(null);
+  // SplitView gives the panel a new `key` per ticket, so this resets when another ticket opens.
+  const [editing, setEditing] = useState(false);
 
   useEffect(() => {
     panelRef.current?.querySelector<HTMLElement>('#ticket-panel-title')?.focus();
-  }, [ticketId]);
+  }, [ticketId, editing]);
 
-  // Escape closes the panel. An open filter menu handles Escape itself and stops it first (see MultiSelect).
+  // Escape leaves edit mode first, then closes the panel. An open filter menu or the New ticket
+  // dialog handle Escape themselves (MultiSelect stops it; a modal <dialog> keeps focus inside).
   const closeSearch = closeTo.search;
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') navigate({ search: closeSearch });
+      if (event.key !== 'Escape' || document.querySelector('dialog[open]')) return;
+      if (editing) setEditing(false);
+      else navigate({ search: closeSearch });
     };
     document.addEventListener('keydown', onKeyDown);
     return () => document.removeEventListener('keydown', onKeyDown);
-  }, [navigate, closeSearch]);
+  }, [navigate, closeSearch, editing]);
 
   const notFound = isError && error instanceof ApiError && error.status === 404;
 
@@ -101,6 +107,11 @@ export function TicketPanel({ ticketId }: { ticketId: string }) {
         <span className={`${styles.meta} mono`}>
           {ticket ? `${ticket.customer_id} · ${formatAge(ticket.created_at)} ago` : ' '}
         </span>
+        {ticket && !editing && (
+          <button type="button" className={styles.edit} onClick={() => setEditing(true)}>
+            Edit
+          </button>
+        )}
         <Link to={closeTo} className={styles.close} aria-label="Close ticket">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
             <path d="M6 6l12 12M18 6 6 18" />
@@ -109,7 +120,14 @@ export function TicketPanel({ ticketId }: { ticketId: string }) {
       </div>
 
       <div className={styles.body}>
-        {ticket ? (
+        {ticket && editing ? (
+          <>
+            <h2 id="ticket-panel-title" className={styles.editTitle} tabIndex={-1}>
+              Edit ticket
+            </h2>
+            <EditTicket ticket={ticket} onDone={() => setEditing(false)} />
+          </>
+        ) : ticket ? (
           <TicketDetails ticket={ticket} />
         ) : isPending ? (
           <p className={styles.state}>Loading ticket…</p>
