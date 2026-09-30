@@ -1,4 +1,5 @@
 import type { ErrorRequestHandler, RequestHandler } from 'express';
+import multer from 'multer';
 import { HttpError } from '../errors.js';
 
 /** Responds 404 for any route that no router handled. Registered after all routers. */
@@ -28,6 +29,15 @@ export const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
   }
   if (err?.type === 'entity.too.large') {
     return res.status(413).json({ error: 'Payload too large' });
+  }
+
+  // Upload errors from multer (file too big, unexpected field name, ...).
+  if (err instanceof multer.MulterError) {
+    const tooLarge = err.code === 'LIMIT_FILE_SIZE';
+    return res.status(tooLarge ? 413 : 400).json({
+      error: tooLarge ? 'Payload too large' : 'Invalid upload',
+      message: tooLarge ? 'The file is larger than the 5 MB limit' : err.message,
+    });
   }
 
   // Anything else is a bug: log the details, but never leak them to the client.

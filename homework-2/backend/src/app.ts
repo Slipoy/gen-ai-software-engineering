@@ -2,6 +2,7 @@ import express from 'express';
 import { errorHandler, notFoundHandler } from './middleware/errorHandler.js';
 import { InMemoryTicketRepository } from './repositories/inMemoryTicketRepository.js';
 import { ticketsRouter } from './routes/tickets.js';
+import { ImportService } from './services/importService.js';
 import { TicketService } from './services/ticketService.js';
 
 export interface AppDependencies {
@@ -24,7 +25,7 @@ export function createApp({
   app.get('/health', (_req, res) => {
     res.json({ status: 'ok' });
   });
-  app.use('/tickets', ticketsRouter(ticketService));
+  app.use('/tickets', ticketsRouter(ticketService, new ImportService(ticketService)));
 
   app.use(notFoundHandler);
   app.use(errorHandler);

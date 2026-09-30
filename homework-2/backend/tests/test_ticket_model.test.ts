@@ -1,15 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { validateNewTicket, validateTicketUpdate } from '../src/validators/ticketValidator.js';
-
-/** A minimal valid create request; tests override one field at a time. */
-const validTicket = (overrides: Record<string, unknown> = {}) => ({
-  customer_id: 'CUST-001',
-  customer_email: 'jane.doe@example.com',
-  customer_name: 'Jane Doe',
-  subject: 'Cannot log in after password reset',
-  description: 'I reset my password yesterday and now the login page says my credentials are invalid.',
-  ...overrides,
-});
+import { validTicket } from './helpers.js';
 
 /** Returns the error messages for one field, or fails the test if validation passed. */
 function errorsFor(result: ReturnType<typeof validateNewTicket>, field: string) {

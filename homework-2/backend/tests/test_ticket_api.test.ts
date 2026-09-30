@@ -3,26 +3,7 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import { createApp } from '../src/app.js';
 import { InMemoryTicketRepository } from '../src/repositories/inMemoryTicketRepository.js';
 import { TicketService } from '../src/services/ticketService.js';
-
-const validTicket = (overrides: Record<string, unknown> = {}) => ({
-  customer_id: 'CUST-001',
-  customer_email: 'jane.doe@example.com',
-  customer_name: 'Jane Doe',
-  subject: 'Cannot log in after password reset',
-  description: 'I reset my password yesterday and now the login page says my credentials are invalid.',
-  ...overrides,
-});
-
-/** A clock the test can move forward, so timestamps are predictable. */
-function fakeClock(start = '2026-01-01T10:00:00.000Z') {
-  let current = new Date(start).getTime();
-  return {
-    now: () => new Date(current),
-    advance: (ms: number) => {
-      current += ms;
-    },
-  };
-}
+import { fakeClock, validTicket } from './helpers.js';
 
 let app: ReturnType<typeof createApp>;
 let clock: ReturnType<typeof fakeClock>;
