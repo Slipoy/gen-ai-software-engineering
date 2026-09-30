@@ -1,0 +1,171 @@
+# Continuous integration for homework-2 (support tickets system).
+#
+# On every push and pull request that touches homework-2:
+#   backend  ─┐
+#             ├─► docker (build both images, start the stack, smoke-test it)
+#   frontend ─┘
+# backend and frontend run in parallel on separate machines; docker waits for both to pass.
+
+name: Homework 2 CI
+
+on:
+  push:
+    branches: [main, homework-2-submission]
+    paths:
+      - 'homework-2/**'
+      - '.github/workflows/homework-2-ci.yml'
+  pull_request:
+    paths:
+      - 'homework-2/**'
+      - '.github/workflows/homework-2-ci.yml'
+  # A "Run workflow" button on the Actions tab, for running it by hand.
+  workflow_dispatch:
+
+# A new push to the same branch cancels the run still going for the previous one.
+concurrency:
+  group: homework-2-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+# Least privilege: the jobs only read the code.
+permissions:
+  contents: read
+
+jobs:
+  backend:
+    name: Backend (typecheck, tests, coverage, build)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: homework-2/backend
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      - name: Set up Node 22 with an npm cache
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: homework-2/backend/package-lock.json
+
+      - name: Install dependencies (exact versions from package-lock.json)
+        run: npm ci
+
+      - name: Type-check
+        run: npm run typecheck
+
+      # Fails the job if a test fails or coverage drops below the 85% thresholds in vitest.config.ts.
+      - name: Run tests with coverage
+        run: npm run test:coverage
+
+      - name: Build
+        run: npm run build
+
+      # The HTML coverage report can be downloaded from the run page, even when tests failed.
+      - name: Upload the coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-coverage
+          path: homework-2/backend/coverage/
+          retention-days: 14
+
+  frontend:
+    name: Frontend (typecheck, lint, tests, coverage, build)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: homework-2/frontend
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      - name: Set up Node 22 with an npm cache
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: homework-2/frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type-check
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Run tests with coverage
+        run: npm run test:coverage
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload the coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-coverage
+          path: homework-2/frontend/coverage/
+          retention-days: 14
+
+  docker:
+    name: Docker (build images, start stack, smoke test)
+    needs: [backend, frontend]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: homework-2
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      # Buildx is Docker's builder; it can store layers in the GitHub Actions cache between runs.
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # Built under the names docker compose expects, so `compose up --no-build` uses these images.
+      - name: Build the backend image
+        uses: docker/build-push-action@v6
+        with:
+          context: homework-2/backend
+          tags: support-tickets-backend:latest
+          load: true
+          cache-from: type=gha,scope=backend
+          cache-to: type=gha,scope=backend,mode=max
+
+      - name: Build the frontend image
+        uses: docker/build-push-action@v6
+        with:
+          context: homework-2/frontend
+          tags: support-tickets-frontend:latest
+          load: true
+          cache-from: type=gha,scope=frontend
+          cache-to: type=gha,scope=frontend,mode=max
+
+      - name: Start the stack
+        run: docker compose up -d --no-build --wait --wait-timeout 90
+
+      # The same checks a person would do by hand: the page loads and the API answers through nginx.
+      - name: Smoke test through nginx
+        run: |
+          set -euo pipefail
+          curl -fsS http://localhost:8080/ | grep -q '<div id="root">'
+          curl -fsS http://localhost:8080/tickets | grep -q '<div id="root">'   # SPA fallback
+          test "$(curl -fsS http://localhost:8080/api/health)" = '{"status":"ok"}'
+          curl -fsS -F "file=@backend/tests/fixtures/sample_tickets.csv" \
+            "http://localhost:8080/api/tickets/import?auto_classify=true" | grep -q '"successful":50'
+          test "$(curl -fsS http://localhost:8080/api/tickets | grep -o '"id"' | wc -l)" -eq 50
+          echo "Smoke test passed"
+
+      - name: Show container logs if something failed
+        if: failure()
+        run: docker compose logs --no-color
+
+      - name: Stop the stack
+        if: always()
+        run: docker compose down -v

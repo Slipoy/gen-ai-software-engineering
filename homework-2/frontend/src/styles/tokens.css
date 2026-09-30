@@ -1,0 +1,63 @@
+/*
+ * Switchboard design tokens: the single source of colours, type and spacing.
+ * Components use var(--…) only, never raw hex values, so the look can be tuned here.
+ * The design is deliberately dark-only (an operations console), so there is one palette.
+ */
+:root {
+  color-scheme: dark;
+
+  /* Surfaces, from the page background up to raised elements */
+  --bg: #111318;
+  --surface-1: #161920;
+  --surface-2: #1a1d24;
+  --surface-3: #1f232c;
+  --surface-selected: #232833;
+  --border: #262a33;
+  --border-strong: #2d323c;
+
+  /* Text */
+  --text: #e7e9ee;
+  --text-secondary: #c9ced8;
+  --text-muted: #9aa1ad;
+
+  /* Accent (amber) and its text-on-accent colour */
+  --accent: #f3b04f;
+  --accent-hover: #ffc26a;
+  --accent-soft: rgba(243, 176, 79, 0.12);
+  --accent-text: #ffd28c;
+  --on-accent: #1a1406;
+
+  /* Priority colours: they also differ in lightness, not only hue */
+  --priority-urgent: #ff8a7f;
+  --priority-urgent-soft: rgba(255, 107, 94, 0.16);
+  --priority-high: #f3b04f;
+  --priority-medium: #8fb4ff;
+  --priority-low: #9aa1ad;
+
+  /* Feedback */
+  --success: #6fd39a;
+  --success-soft: rgba(111, 211, 154, 0.14);
+  --danger: #ff8a7f;
+  --danger-soft: rgba(255, 107, 94, 0.14);
+  --on-danger: #1c0906;
+
+  /* Type */
+  --font-sans: 'Manrope Variable', 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --text-xs: 11px;
+  --text-sm: 13px;
+  --text-md: 14px;
+  --text-lg: 17px;
+  --text-xl: 21px;
+
+  /* Shape and spacing */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --header-height: 64px;
+}

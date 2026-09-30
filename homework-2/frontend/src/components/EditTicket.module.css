@@ -1,0 +1,52 @@
+.danger {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border);
+}
+
+.warning {
+  color: var(--danger);
+  font-size: var(--text-sm);
+}
+
+.dangerActions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.deleteLink {
+  align-self: flex-start;
+  min-height: 36px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--danger);
+  font-size: var(--text-sm);
+}
+
+.delete,
+.cancelDelete {
+  flex-grow: 1;
+  min-height: 40px;
+  border-radius: var(--radius-md);
+}
+
+.delete {
+  border: 0;
+  background: var(--danger);
+  color: var(--on-danger);
+  font-weight: 700;
+}
+
+.cancelDelete {
+  border: 1px solid var(--border-strong);
+  background: transparent;
+}
+
+.delete:disabled,
+.cancelDelete:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}

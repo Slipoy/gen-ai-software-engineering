@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tickets>
+  <ticket>
+    <customer_id>INV-0001</customer_id>
+    <customer_email>noah.keller@example.com</customer_email>
+    <customer_name>Noah Keller</customer_name>
+    <subject>Cannot log in after password reset</subject>
+    <description>I reset my password this morning, but the login page still says my credentials are invalid. This is important for tomorrow.</description>
+    <category>account_access</category>
+    <priority>high</priority>
+    <status>in_progress</status>
+    <assigned_to>agent.jones</assigned_to>
+    <tags><tag>login</tag><tag>password</tag></tags>
+    <metadata>
+      <source>phone</source>
+      <browser/>
+      <device_type>desktop</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>INV-BAD-EMAIL</customer_id>
+    <customer_email>not-an-email</customer_email>
+    <customer_name>Noah Keller</customer_name>
+    <subject>Cannot log in after password reset</subject>
+    <description>I reset my password this morning, but the login page still says my credentials are invalid. This is important for tomorrow.</description>
+    <category>account_access</category>
+    <priority>high</priority>
+    <status>in_progress</status>
+    <assigned_to>agent.jones</assigned_to>
+    <tags><tag>login</tag><tag>password</tag></tags>
+    <metadata>
+      <source>phone</source>
+      <browser/>
+      <device_type>desktop</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>INV-SHORT</customer_id>
+    <customer_email>noah.keller@example.com</customer_email>
+    <customer_name>Noah Keller</customer_name>
+    <subject>Cannot log in after password reset</subject>
+    <description>Too short</description>
+    <category>account_access</category>
+    <priority>high</priority>
+    <status>in_progress</status>
+    <assigned_to>agent.jones</assigned_to>
+    <tags><tag>login</tag><tag>password</tag></tags>
+    <metadata>
+      <source>phone</source>
+      <browser/>
+      <device_type>desktop</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>INV-ENUM</customer_id>
+    <customer_email>noah.keller@example.com</customer_email>
+    <customer_name>Noah Keller</customer_name>
+    <subject>Cannot log in after password reset</subject>
+    <description>I reset my password this morning, but the login page still says my credentials are invalid. This is important for tomorrow.</description>
+    <category>billing</category>
+    <priority>critical</priority>
+    <status>in_progress</status>
+    <assigned_to>agent.jones</assigned_to>
+    <tags><tag>login</tag><tag>password</tag></tags>
+    <metadata>
+      <source>phone</source>
+      <browser/>
+      <device_type>desktop</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>INV-MISSING</customer_id>
+    <customer_email>noah.keller@example.com</customer_email>
+    <customer_name>Noah Keller</customer_name>
+    <subject></subject>
+    <description>I reset my password this morning, but the login page still says my credentials are invalid. This is important for tomorrow.</description>
+    <category>account_access</category>
+    <priority>high</priority>
+    <status>in_progress</status>
+    <assigned_to>agent.jones</assigned_to>
+    <tags><tag>login</tag><tag>password</tag></tags>
+    <metadata>
+      <source>phone</source>
+      <browser/>
+      <device_type>desktop</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>INV-0002</customer_id>
+    <customer_email>grace.ortiz@acme.test</customer_email>
+    <customer_name>Grace Ortiz</customer_name>
+    <subject>Calendar sync stopped working</subject>
+    <description>The calendar sync with our Google account stopped working yesterday; new events no longer appear. Thanks in advance.</description>
+    <category>technical_issue</category>
+    <priority>medium</priority>
+    <status>new</status>
+    <assigned_to/>
+    <tags><tag>sync</tag><tag>calendar</tag></tags>
+    <metadata>
+      <source>email</source>
+      <browser/>
+      <device_type>desktop</device_type>
+    </metadata>
+  </ticket>
+</tickets>

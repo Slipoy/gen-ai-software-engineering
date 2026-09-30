@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tickets>
+  <ticket>
+    <customer_id>XML-0001</customer_id>
+    <customer_email>ben.tanaka@example.com</customer_email>
+    <customer_name>Ben Tanaka</customer_name>
+    <subject>Cannot log in after password reset</subject>
+    <description>I reset my password this morning, but the login page still says my credentials are invalid.</description>
+    <category>account_access</category>
+    <priority>medium</priority>
+    <status>in_progress</status>
+    <assigned_to>agent.smith</assigned_to>
+    <tags><tag>login</tag><tag>password</tag></tags>
+    <metadata>
+      <source>api</source>
+      <browser>Safari 17</browser>
+      <device_type>mobile</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0002</customer_id>
+    <customer_email>jonas.tanaka@northwind.example</customer_email>
+    <customer_name>Jonas Tanaka</customer_name>
+    <subject>Calendar sync stopped working</subject>
+    <description>The calendar sync with our Google account stopped working yesterday; new events no longer appear. This is blocking our team.</description>
+    <category>technical_issue</category>
+    <priority>high</priority>
+    <status>in_progress</status>
+    <assigned_to>agent.smith</assigned_to>
+    <tags><tag>sync</tag><tag>calendar</tag></tags>
+    <metadata>
+      <source>phone</source>
+      <browser/>
+      <device_type>desktop</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0003</customer_id>
+    <customer_email>kira.keller@contoso.example</customer_email>
+    <customer_name>Kira Keller</customer_name>
+    <subject>Payment method update failed</subject>
+    <description>I tried to update the card used for payment, but the billing page does not save the new card. Thanks in advance.</description>
+    <category>billing_question</category>
+    <priority>medium</priority>
+    <status>resolved</status>
+    <assigned_to>agent.garcia</assigned_to>
+    <tags><tag>payment</tag><tag>card</tag></tags>
+    <metadata>
+      <source>phone</source>
+      <browser/>
+      <device_type>desktop</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0004</customer_id>
+    <customer_email>hugo.ortiz@acme.test</customer_email>
+    <customer_name>Hugo Ortiz</customer_name>
+    <subject>Date picker shows the wrong month</subject>
+    <description>Since the last update the date picker opens on the previous month. Steps to reproduce: open any form with a date field. This is important for tomorrow.</description>
+    <category>bug_report</category>
+    <priority>high</priority>
+    <status>new</status>
+    <assigned_to/>
+    <tags><tag>date-picker</tag><tag>regression</tag></tags>
+    <metadata>
+      <source>web_form</source>
+      <browser>Edge 128</browser>
+      <device_type>desktop</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0005</customer_id>
+    <customer_email>liam.kowalski@northwind.example</customer_email>
+    <customer_name>Liam Kowalski</customer_name>
+    <subject>Request for a product demo</subject>
+    <description>Our new team lead asks for a short product demo for the whole department next week. Let me know if you need more details.</description>
+    <category>other</category>
+    <priority>medium</priority>
+    <status>waiting_customer</status>
+    <assigned_to>agent.garcia</assigned_to>
+    <tags><tag>demo</tag></tags>
+    <metadata>
+      <source>web_form</source>
+      <browser>Firefox 130</browser>
+      <device_type>mobile</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0006</customer_id>
+    <customer_email>pavel.weber@northwind.example</customer_email>
+    <customer_name>Pavel Weber</customer_name>
+    <subject>App crashes on startup</subject>
+    <description>The mobile app crashes every time I open it. It shows the splash screen and then closes. Thanks in advance.</description>
+    <category>technical_issue</category>
+    <priority>medium</priority>
+    <status>in_progress</status>
+    <assigned_to>agent.garcia</assigned_to>
+    <tags><tag>crash</tag><tag>mobile</tag></tags>
+    <metadata>
+      <source>chat</source>
+      <browser>Firefox 130</browser>
+      <device_type>mobile</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0007</customer_id>
+    <customer_email>noah.fischer@example.com</customer_email>
+    <customer_name>Noah Fischer</customer_name>
+    <subject>Question about annual plan pricing</subject>
+    <description>What is the price difference between the monthly and the annual plan, and can we switch mid-year? Just a suggestion.</description>
+    <category>billing_question</category>
+    <priority>low</priority>
+    <status>in_progress</status>
+    <assigned_to>agent.jones</assigned_to>
+    <tags><tag>pricing</tag><tag>plan</tag></tags>
+    <metadata>
+      <source>chat</source>
+      <browser>Edge 128</browser>
+      <device_type>desktop</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0008</customer_id>
+    <customer_email>jonas.kowalski@contoso.example</customer_email>
+    <customer_name>Jonas Kowalski</customer_name>
+    <subject>Custom fields on tickets</subject>
+    <description>Could you add support for custom fields on tickets? We need to track the contract number. Please help ASAP.</description>
+    <category>feature_request</category>
+    <priority>high</priority>
+    <status>new</status>
+    <assigned_to/>
+    <tags><tag>tickets</tag><tag>customization</tag></tags>
+    <metadata>
+      <source>api</source>
+      <browser>Chrome 128</browser>
+      <device_type>mobile</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0009</customer_id>
+    <customer_email>pavel.keller@northwind.example</customer_email>
+    <customer_name>Pavel Keller</customer_name>
+    <subject>Partnership inquiry</subject>
+    <description>We are a consulting company and would be interested in becoming a reseller. Who should we talk to? No rush, this is minor.</description>
+    <category>other</category>
+    <priority>low</priority>
+    <status>waiting_customer</status>
+    <assigned_to>agent.garcia</assigned_to>
+    <tags><tag>sales</tag></tags>
+    <metadata>
+      <source>api</source>
+      <browser>Safari 17</browser>
+      <device_type>desktop</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0010</customer_id>
+    <customer_email>liam.weber@acme.test</customer_email>
+    <customer_name>Liam Weber</customer_name>
+    <subject>SSO login redirects in a loop</subject>
+    <description>When I sign in with single sign-on, the page keeps redirecting back to the login screen. Just a suggestion.</description>
+    <category>account_access</category>
+    <priority>low</priority>
+    <status>closed</status>
+    <assigned_to>agent.jones</assigned_to>
+    <tags><tag>sso</tag><tag>login</tag></tags>
+    <metadata>
+      <source>phone</source>
+      <browser/>
+      <device_type>tablet</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0011</customer_id>
+    <customer_email>carla.jensen@contoso.example</customer_email>
+    <customer_name>Carla Jensen</customer_name>
+    <subject>Charged twice this month</subject>
+    <description>I see two charges on my credit card for the same subscription this month. Please refund one of them. No rush, this is minor.</description>
+    <category>billing_question</category>
+    <priority>low</priority>
+    <status>in_progress</status>
+    <assigned_to>agent.smith</assigned_to>
+    <tags><tag>billing</tag><tag>refund</tag></tags>
+    <metadata>
+      <source>api</source>
+      <browser>Edge 128</browser>
+      <device_type>desktop</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0012</customer_id>
+    <customer_email>anna.ortiz@contoso.example</customer_email>
+    <customer_name>Anna Ortiz</customer_name>
+    <subject>Integration with Slack</subject>
+    <description>Please add an integration with Slack so new ticket updates can be posted to our team channel. Please treat this as urgent.</description>
+    <category>feature_request</category>
+    <priority>urgent</priority>
+    <status>resolved</status>
+    <assigned_to>agent.jones</assigned_to>
+    <tags><tag>integration</tag><tag>slack</tag></tags>
+    <metadata>
+      <source>web_form</source>
+      <browser>Chrome 128</browser>
+      <device_type>desktop</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0013</customer_id>
+    <customer_email>david.jensen@northwind.example</customer_email>
+    <customer_name>David Jensen</customer_name>
+    <subject>Typo on the settings page</subject>
+    <description>There is a typo in the heading of the notification settings page: it says Notifcations.</description>
+    <category>bug_report</category>
+    <priority>low</priority>
+    <status>new</status>
+    <assigned_to/>
+    <tags><tag>typo</tag><tag>ui</tag></tags>
+    <metadata>
+      <source>chat</source>
+      <browser>Edge 128</browser>
+      <device_type>tablet</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0014</customer_id>
+    <customer_email>maya.ortiz@acme.test</customer_email>
+    <customer_name>Maya Ortiz</customer_name>
+    <subject>2FA code never arrives</subject>
+    <description>The verification code SMS for two-factor authentication never reaches my phone, so I am locked out. This is critical for our business.</description>
+    <category>account_access</category>
+    <priority>urgent</priority>
+    <status>new</status>
+    <assigned_to/>
+    <tags><tag>2fa</tag></tags>
+    <metadata>
+      <source>api</source>
+      <browser>Edge 128</browser>
+      <device_type>tablet</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0015</customer_id>
+    <customer_email>hugo.silva@acme.test</customer_email>
+    <customer_name>Hugo Silva</customer_name>
+    <subject>Uploads fail with an error</subject>
+    <description>Every file upload fails with an error message saying the server is unavailable. Nothing gets saved. We see this as a security concern.</description>
+    <category>technical_issue</category>
+    <priority>urgent</priority>
+    <status>new</status>
+    <assigned_to/>
+    <tags><tag>upload</tag></tags>
+    <metadata>
+      <source>api</source>
+      <browser>Safari 17</browser>
+      <device_type>mobile</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0016</customer_id>
+    <customer_email>grace.silva@example.com</customer_email>
+    <customer_name>Grace Silva</customer_name>
+    <subject>Dark mode for the web app</subject>
+    <description>It would be great to have a dark mode in the web app. Many of us work late and the white screen is tiring. Please treat this as urgent.</description>
+    <category>feature_request</category>
+    <priority>urgent</priority>
+    <status>waiting_customer</status>
+    <assigned_to>agent.smith</assigned_to>
+    <tags><tag>ui</tag><tag>dark-mode</tag></tags>
+    <metadata>
+      <source>email</source>
+      <browser/>
+      <device_type>tablet</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0017</customer_id>
+    <customer_email>pavel.weber@acme.test</customer_email>
+    <customer_name>Pavel Weber</customer_name>
+    <subject>Search ignores the status filter</subject>
+    <description>To reproduce: filter tickets by status Closed and search for any word. Expected: only closed tickets. Actual: all tickets. This is blocking our team.</description>
+    <category>bug_report</category>
+    <priority>high</priority>
+    <status>resolved</status>
+    <assigned_to>agent.smith</assigned_to>
+    <tags><tag>search</tag><tag>filters</tag></tags>
+    <metadata>
+      <source>email</source>
+      <browser/>
+      <device_type>desktop</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0018</customer_id>
+    <customer_email>elena.keller@acme.test</customer_email>
+    <customer_name>Elena Keller</customer_name>
+    <subject>Where can I find your GDPR documents?</subject>
+    <description>Our legal team asks for your data processing agreement and a list of sub-processors. This is critical for our business.</description>
+    <category>other</category>
+    <priority>urgent</priority>
+    <status>new</status>
+    <assigned_to/>
+    <tags><tag>legal</tag></tags>
+    <metadata>
+      <source>api</source>
+      <browser>Edge 128</browser>
+      <device_type>mobile</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0019</customer_id>
+    <customer_email>grace.schmidt@example.com</customer_email>
+    <customer_name>Grace Schmidt</customer_name>
+    <subject>Dashboard does not load</subject>
+    <description>The dashboard is stuck on a blank page and the browser console shows a timeout error. Just a suggestion.</description>
+    <category>technical_issue</category>
+    <priority>low</priority>
+    <status>new</status>
+    <assigned_to/>
+    <tags><tag>dashboard</tag></tags>
+    <metadata>
+      <source>email</source>
+      <browser/>
+      <device_type>tablet</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0020</customer_id>
+    <customer_email>grace.kowalski@contoso.example</customer_email>
+    <customer_name>Grace Kowalski</customer_name>
+    <subject>Refund for cancelled subscription</subject>
+    <description>I cancelled my subscription last week but was still billed for the next month. Can I get a refund? Please help ASAP.</description>
+    <category>billing_question</category>
+    <priority>high</priority>
+    <status>closed</status>
+    <assigned_to>agent.smith</assigned_to>
+    <tags><tag>refund</tag><tag>subscription</tag></tags>
+    <metadata>
+      <source>web_form</source>
+      <browser>Edge 128</browser>
+      <device_type>mobile</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0021</customer_id>
+    <customer_email>jonas.ortiz@northwind.example</customer_email>
+    <customer_name>Jonas Ortiz</customer_name>
+    <subject>Export button does nothing</subject>
+    <description>Steps to reproduce:
+1. Open Reports
+2. Click Export
+Expected result: a CSV download. Actual result: nothing happens. This is blocking our team.</description>
+    <category>bug_report</category>
+    <priority>high</priority>
+    <status>new</status>
+    <assigned_to/>
+    <tags><tag>export</tag><tag>reports</tag></tags>
+    <metadata>
+      <source>phone</source>
+      <browser/>
+      <device_type>mobile</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0022</customer_id>
+    <customer_email>sven.jensen@contoso.example</customer_email>
+    <customer_name>Sven Jensen</customer_name>
+    <subject>Thank you for the quick help</subject>
+    <description>Just wanted to say thank you to Maria from your team for solving our issue so quickly yesterday. No rush, this is minor.</description>
+    <category>other</category>
+    <priority>low</priority>
+    <status>resolved</status>
+    <assigned_to>agent.jones</assigned_to>
+    <tags><tag>feedback</tag></tags>
+    <metadata>
+      <source>email</source>
+      <browser/>
+      <device_type>mobile</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0023</customer_id>
+    <customer_email>elena.jensen@contoso.example</customer_email>
+    <customer_name>Elena Jensen</customer_name>
+    <subject>Password reset email not received</subject>
+    <description>I requested a password reset link three times, but no email has arrived, not even in spam. This is blocking our team.</description>
+    <category>account_access</category>
+    <priority>high</priority>
+    <status>in_progress</status>
+    <assigned_to>agent.jones</assigned_to>
+    <tags><tag>password</tag><tag>email</tag></tags>
+    <metadata>
+      <source>phone</source>
+      <browser/>
+      <device_type>desktop</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0024</customer_id>
+    <customer_email>olga.silva@contoso.example</customer_email>
+    <customer_name>Olga Silva</customer_name>
+    <subject>Invoice shows the wrong company name</subject>
+    <description>Our latest invoice has the old company name on it. We need a corrected invoice for accounting. This is blocking our team.</description>
+    <category>billing_question</category>
+    <priority>high</priority>
+    <status>closed</status>
+    <assigned_to>agent.jones</assigned_to>
+    <tags><tag>invoice</tag></tags>
+    <metadata>
+      <source>phone</source>
+      <browser/>
+      <device_type>mobile</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0025</customer_id>
+    <customer_email>noah.rossi@northwind.example</customer_email>
+    <customer_name>Noah Rossi</customer_name>
+    <subject>Bulk edit for contacts</subject>
+    <description>It would be nice to edit several contacts at once. An improvement like this would save us hours. This is important for tomorrow.</description>
+    <category>feature_request</category>
+    <priority>high</priority>
+    <status>new</status>
+    <assigned_to/>
+    <tags><tag>contacts</tag></tags>
+    <metadata>
+      <source>chat</source>
+      <browser>Edge 128</browser>
+      <device_type>mobile</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0026</customer_id>
+    <customer_email>elena.keller@northwind.example</customer_email>
+    <customer_name>Elena Keller</customer_name>
+    <subject>Question about your office hours</subject>
+    <description>What are the opening hours of your support team during public holidays? Just a suggestion.</description>
+    <category>other</category>
+    <priority>low</priority>
+    <status>new</status>
+    <assigned_to/>
+    <tags><tag>general</tag></tags>
+    <metadata>
+      <source>email</source>
+      <browser/>
+      <device_type>tablet</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0027</customer_id>
+    <customer_email>farid.weber@northwind.example</customer_email>
+    <customer_name>Farid Weber</customer_name>
+    <subject>Account locked after several attempts</subject>
+    <description>My account is locked after a few failed sign in attempts. How long do I have to wait to log in again? It is only a minor issue.</description>
+    <category>account_access</category>
+    <priority>low</priority>
+    <status>in_progress</status>
+    <assigned_to>agent.garcia</assigned_to>
+    <tags><tag>login</tag><tag>locked</tag></tags>
+    <metadata>
+      <source>email</source>
+      <browser/>
+      <device_type>mobile</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0028</customer_id>
+    <customer_email>elena.weber@northwind.example</customer_email>
+    <customer_name>Elena Weber</customer_name>
+    <subject>Reports page is very slow</subject>
+    <description>The reports page takes more than a minute to open and often freezes the browser tab.</description>
+    <category>technical_issue</category>
+    <priority>medium</priority>
+    <status>resolved</status>
+    <assigned_to>agent.jones</assigned_to>
+    <tags><tag>performance</tag><tag>reports</tag></tags>
+    <metadata>
+      <source>phone</source>
+      <browser/>
+      <device_type>tablet</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0029</customer_id>
+    <customer_email>kira.kowalski@contoso.example</customer_email>
+    <customer_name>Kira Kowalski</customer_name>
+    <subject>Export reports to PDF</subject>
+    <description>We would like to export reports to PDF so we can attach them to our monthly management summary. This is critical for our business.</description>
+    <category>feature_request</category>
+    <priority>urgent</priority>
+    <status>in_progress</status>
+    <assigned_to>agent.garcia</assigned_to>
+    <tags><tag>reports</tag><tag>export</tag></tags>
+    <metadata>
+      <source>chat</source>
+      <browser>Safari 17</browser>
+      <device_type>desktop</device_type>
+    </metadata>
+  </ticket>
+  <ticket>
+    <customer_id>XML-0030</customer_id>
+    <customer_email>yuki.weber@northwind.example</customer_email>
+    <customer_name>Yuki Weber</customer_name>
+    <subject>Avatar upload rotates photos</subject>
+    <description>Steps to reproduce: upload a portrait photo taken on a phone. Expected behavior: upright avatar. Actual behavior: rotated 90 degrees. Just a suggestion.</description>
+    <category>bug_report</category>
+    <priority>low</priority>
+    <status>closed</status>
+    <assigned_to>agent.smith</assigned_to>
+    <tags><tag>avatar</tag></tags>
+    <metadata>
+      <source>web_form</source>
+      <browser>Safari 17</browser>
+      <device_type>mobile</device_type>
+    </metadata>
+  </ticket>
+</tickets>

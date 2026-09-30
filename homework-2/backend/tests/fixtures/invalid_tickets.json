@@ -1,0 +1,122 @@
+[
+  {
+    "customer_id": "INV-0001",
+    "customer_email": "noah.keller@example.com",
+    "customer_name": "Noah Keller",
+    "subject": "Cannot log in after password reset",
+    "description": "I reset my password this morning, but the login page still says my credentials are invalid. This is important for tomorrow.",
+    "category": "account_access",
+    "priority": "high",
+    "status": "in_progress",
+    "assigned_to": "agent.jones",
+    "tags": [
+      "login",
+      "password"
+    ],
+    "metadata": {
+      "source": "phone",
+      "browser": null,
+      "device_type": "desktop"
+    }
+  },
+  {
+    "customer_id": "INV-BAD-EMAIL",
+    "customer_email": "not-an-email",
+    "customer_name": "Noah Keller",
+    "subject": "Cannot log in after password reset",
+    "description": "I reset my password this morning, but the login page still says my credentials are invalid. This is important for tomorrow.",
+    "category": "account_access",
+    "priority": "high",
+    "status": "in_progress",
+    "assigned_to": "agent.jones",
+    "tags": [
+      "login",
+      "password"
+    ],
+    "metadata": {
+      "source": "phone",
+      "browser": null,
+      "device_type": "desktop"
+    }
+  },
+  {
+    "customer_id": "INV-SHORT",
+    "customer_email": "noah.keller@example.com",
+    "customer_name": "Noah Keller",
+    "subject": "Cannot log in after password reset",
+    "description": "Too short",
+    "category": "account_access",
+    "priority": "high",
+    "status": "in_progress",
+    "assigned_to": "agent.jones",
+    "tags": [
+      "login",
+      "password"
+    ],
+    "metadata": {
+      "source": "phone",
+      "browser": null,
+      "device_type": "desktop"
+    }
+  },
+  {
+    "customer_id": "INV-ENUM",
+    "customer_email": "noah.keller@example.com",
+    "customer_name": "Noah Keller",
+    "subject": "Cannot log in after password reset",
+    "description": "I reset my password this morning, but the login page still says my credentials are invalid. This is important for tomorrow.",
+    "category": "billing",
+    "priority": "critical",
+    "status": "in_progress",
+    "assigned_to": "agent.jones",
+    "tags": [
+      "login",
+      "password"
+    ],
+    "metadata": {
+      "source": "phone",
+      "browser": null,
+      "device_type": "desktop"
+    }
+  },
+  {
+    "customer_id": "INV-MISSING",
+    "customer_email": "noah.keller@example.com",
+    "customer_name": "Noah Keller",
+    "subject": "",
+    "description": "I reset my password this morning, but the login page still says my credentials are invalid. This is important for tomorrow.",
+    "category": "account_access",
+    "priority": "high",
+    "status": "in_progress",
+    "assigned_to": "agent.jones",
+    "tags": [
+      "login",
+      "password"
+    ],
+    "metadata": {
+      "source": "phone",
+      "browser": null,
+      "device_type": "desktop"
+    }
+  },
+  {
+    "customer_id": "INV-0002",
+    "customer_email": "grace.ortiz@acme.test",
+    "customer_name": "Grace Ortiz",
+    "subject": "Calendar sync stopped working",
+    "description": "The calendar sync with our Google account stopped working yesterday; new events no longer appear. Thanks in advance.",
+    "category": "technical_issue",
+    "priority": "medium",
+    "status": "new",
+    "assigned_to": null,
+    "tags": [
+      "sync",
+      "calendar"
+    ],
+    "metadata": {
+      "source": "email",
+      "browser": null,
+      "device_type": "desktop"
+    }
+  }
+]

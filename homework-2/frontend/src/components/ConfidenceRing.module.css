@@ -1,0 +1,43 @@
+.ring {
+  --ring-color: var(--accent);
+  width: 76px;
+  height: 76px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: conic-gradient(var(--ring-color) 0 var(--value), var(--border-strong) var(--value) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Low confidence reads as a warning, so the agent double-checks the suggestion. */
+.ring[data-level='low'] {
+  --ring-color: var(--priority-urgent);
+}
+
+.ring[data-level='medium'] {
+  --ring-color: var(--priority-medium);
+}
+
+.inner {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--surface-3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.number {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--text-lg);
+  line-height: 1.1;
+}
+
+.caption {
+  font-size: 10px;
+  color: var(--text-muted);
+}

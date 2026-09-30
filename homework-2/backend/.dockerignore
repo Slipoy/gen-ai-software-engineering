@@ -1,0 +1,14 @@
+# Not sent to the Docker build: rebuilt inside the image, local-only, or not needed to run the server.
+node_modules
+dist
+coverage
+data
+.vitest
+*.log
+.env
+.env.*
+.DS_Store
+tests
+scripts
+Dockerfile
+.dockerignore

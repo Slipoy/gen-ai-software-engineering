@@ -1,0 +1,34 @@
+# The whole system with one command:
+#
+#   docker compose up --build        # build both images and start them; open http://localhost:8080
+#   docker compose down              # stop and remove the containers (the data volume stays)
+#   docker compose down -v           # ...and delete the data volume too
+#
+# Only the frontend is published to the host. The backend is reachable inside the compose network
+# as http://backend:3000 (nginx forwards /api there), so it is not exposed on its own.
+
+name: support-tickets
+
+services:
+  backend:
+    build: ./backend
+    environment:
+      PORT: "3000"
+      DB_PATH: /app/data/tickets.db
+    volumes:
+      - tickets-data:/app/data
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      # Start nginx only once the API answers /health (the backend image's HEALTHCHECK).
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  # A named volume managed by Docker: the SQLite file survives `docker compose down` and image rebuilds.
+  tickets-data:
